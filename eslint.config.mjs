@@ -65,6 +65,17 @@ export default tseslint.config(
     },
   },
 
+  // Static website (plain browser scripts)
+  {
+    files: ["website/**/*.js"],
+    languageOptions: {
+      sourceType: "script",
+      globals: {
+        ...globals.browser,
+      },
+    },
+  },
+
   // ============================================
   // React apps (Explorer, Tutorial) shared configuration
   // ============================================

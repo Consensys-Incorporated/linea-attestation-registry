@@ -107,3 +107,6 @@ node_modules/
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# Playwright CLI local artifacts
+.playwright-cli/

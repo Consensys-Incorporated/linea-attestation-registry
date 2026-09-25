@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Verax Attestation Registry</title>
+    <meta
+      name="description"
+      content="Verax is a public registry for storing on-chain attestations, designed for enhanced discoverability and composability"
+    />
+    <link rel="canonical" href="https://www.ver.ax/" />
+    <meta name="theme-color" content="#000000" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="www.ver.ax" />
+    <meta property="og:url" content="https://www.ver.ax/" />
+    <meta property="og:title" content="Verax Attestation Registry" />
+    <meta
+      property="og:description"
+      content="Verax is a public registry for storing on-chain attestations, designed for enhanced discoverability and composability"
+    />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png" />
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
+
+    <link rel="preload" href="assets/fonts/wix-madefor-display-600.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="assets/fonts/wix-madefor-text-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="styles.css" />
+
+    <script>
+      document.documentElement.classList.replace("no-js", "js");
+    </script>
+    <script src="main.js" defer></script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <svg class="icon-sprite" aria-hidden="true" focusable="false">
+      <symbol id="icon-play" viewBox="0 0 24 24">
+        <path d="M12 0C5.383 0 0 5.383 0 12s5.383 12 12 12 12-5.383 12-12S18.617 0 12 0zM9 17V7l8 5-8 5z" />
+      </symbol>
+      <symbol id="icon-check" viewBox="0 0 24 24">
+        <path d="M12 0a12 12 0 1 0 12 12A12.035 12.035 0 0 0 12 0Zm-2 17.414L4.586 12 6 10.586l4 4 8-8L19.414 8Z" />
+      </symbol>
+      <symbol id="icon-github" viewBox="0 0 32 32">
+        <path
+          fill-rule="evenodd"
+          d="M16 .4C7.2.4 0 7.6 0 16.4c0 7.1 4.6 13.1 10.9 15.2.8.1 1.1-.3 1.1-.8v-2.7c-4.5 1-5.4-2.1-5.4-2.1-.7-1.8-1.8-2.3-1.8-2.3-1.5-1 .1-1 .1-1 1.6.1 2.5 1.6 2.5 1.6 1.4 2.4 3.7 1.7 4.7 1.3.1-1 .6-1.7 1-2.1-3.6-.4-7.3-1.8-7.3-7.9 0-1.7.6-3.2 1.6-4.3-.2-.4-.7-2 .2-4.2 0 0 1.3-.4 4.4 1.6 1.3-.4 2.6-.5 4-.5s2.7.2 4 .5C23.1 6.6 24.4 7 24.4 7c.9 2.2.3 3.8.2 4.2 1 1.1 1.6 2.5 1.6 4.3 0 6.1-3.7 7.5-7.3 7.9.6.5 1.1 1.5 1.1 3v4.4c0 .4.3.9 1.1.8C27.4 29.5 32 23.5 32 16.4 32 7.6 24.8.4 16 .4z"
+        />
+      </symbol>
+      <symbol id="icon-twitter" viewBox="0 0 32 32">
+        <path
+          d="M32 6.1c-1.2.5-2.4.9-3.8 1 1.4-.8 2.4-2.1 2.9-3.6-1.3.8-2.7 1.3-4.2 1.6C25.7 3.8 24 3 22.2 3c-3.6 0-6.6 2.9-6.6 6.6 0 .5.1 1 .2 1.5-5.5-.3-10.3-2.9-13.6-6.9-.6 1-.9 2.1-.9 3.3 0 2.3 1.2 4.3 2.9 5.5-1.1 0-2.1-.3-3-.8v.1c0 3.2 2.3 5.8 5.3 6.4-.6.1-1.1.2-1.7.2-.4 0-.8 0-1.2-.1.8 2.6 3.3 4.5 6.1 4.6-2.2 1.8-5.1 2.8-8.2 2.8-.5 0-1.1 0-1.6-.1C2.9 27.9 6.4 29 10.1 29c12.1 0 18.7-10 18.7-18.7v-.8c1.2-1 2.3-2.1 3.2-3.4z"
+        />
+      </symbol>
+      <symbol id="icon-discord" viewBox="0 0 32 32">
+        <path
+          d="M13.1 13.424a1.782 1.782 0 0 0 0 3.552 1.7 1.7 0 0 0 1.636-1.776 1.694 1.694 0 0 0-1.636-1.776Zm5.84 0a1.782 1.782 0 1 0 1.636 1.776 1.7 1.7 0 0 0-1.632-1.776Z"
+        />
+        <path
+          d="M26.72 0H5.28A3.288 3.288 0 0 0 2 3.3v21.628a3.288 3.288 0 0 0 3.28 3.3h18.144l-.848-2.96 2.048 1.9 1.936 1.792L30 32V3.3A3.288 3.288 0 0 0 26.72 0Zm-6.176 20.9s-.576-.688-1.056-1.3a5.049 5.049 0 0 0 2.9-1.9 9.156 9.156 0 0 1-1.84.944 10.531 10.531 0 0 1-2.32.688 11.208 11.208 0 0 1-4.144-.016 13.431 13.431 0 0 1-2.352-.688A9.6 9.6 0 0 1 9.9 17.68a4.976 4.976 0 0 0 2.8 1.888c-.48.608-1.072 1.328-1.072 1.328a5.8 5.8 0 0 1-4.88-2.432 21.426 21.426 0 0 1 2.3-9.328 7.912 7.912 0 0 1 4.5-1.68l.16.192A10.794 10.794 0 0 0 9.5 9.744s.352-.192.944-.464a12.015 12.015 0 0 1 3.636-1.008 1.576 1.576 0 0 1 .272-.032 13.538 13.538 0 0 1 3.232-.032A13.043 13.043 0 0 1 22.4 9.744a10.648 10.648 0 0 0-3.984-2.032l.224-.256a7.912 7.912 0 0 1 4.5 1.68 21.426 21.426 0 0 1 2.3 9.328 5.849 5.849 0 0 1-4.896 2.436Z"
+        />
+      </symbol>
+    </svg>
+
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="brand" href="/">
+          <img class="brand__logo" src="assets/images/verax-logo.webp" width="48" height="48" alt="" />
+          <span class="brand__name">Verax</span>
+        </a>
+
+        <button
+          class="menu-toggle"
+          type="button"
+          aria-controls="site-nav"
+          aria-expanded="false"
+          aria-label="Open menu"
+          data-menu-toggle
+        >
+          <svg class="menu-toggle__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path class="menu-toggle__line menu-toggle__line--top" d="M4 8.5h16" />
+            <path class="menu-toggle__line menu-toggle__line--bottom" d="M4 15.5h16" />
+          </svg>
+        </button>
+
+        <nav class="site-nav" id="site-nav" aria-label="Main">
+          <ul class="site-nav__list">
+            <li>
+              <a class="site-nav__link" href="https://explorer.ver.ax/linea" target="_blank" rel="noopener noreferrer"
+                >Explorer</a
+              >
+            </li>
+            <li>
+              <a
+                class="site-nav__link"
+                href="https://docs.ver.ax/verax-documentation/developer-guides/tutorials"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Tutorials</a
+              >
+            </li>
+            <li>
+              <a class="site-nav__link" href="https://docs.ver.ax/" target="_blank" rel="noopener noreferrer"
+                >Documentation</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__inner">
+          <div class="hero__media">
+            <img class="hero__mark" src="assets/images/verax-mark.svg" width="441" height="393" alt="" />
+          </div>
+          <div class="hero__content">
+            <h1 class="heading-xl" id="hero-title">Your Reputation under Your Control</h1>
+            <p class="hero__lead">
+              Verax is a public registry for storing on-chain attestations, designed for enhanced discoverability and
+              composability
+            </p>
+            <a class="button" href="https://explorer.ver.ax/" target="_blank" rel="noopener noreferrer"
+              >Explore the Ecosystem</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--light section--about" aria-labelledby="about-title">
+        <div class="container about">
+          <h2 class="heading-xl" id="about-title">Unlocking the Value of Reputation</h2>
+          <p class="text-body">
+            Verax allows dapps to easily access attestations from numerous issuers without having to integrate with each
+            one directly. Unlike NFTs, attestations are easily discoverable and can be easily linked together. Users can
+            see all their attestations in one place and discover the value they unlock.
+          </p>
+        </div>
+      </section>
+
+      <section class="section section--light section--audiences" aria-label="Benefits">
+        <div class="container audiences">
+          <article class="audience-card">
+            <h3 class="heading-md">For Users</h3>
+            <ul class="icon-list icon-list--roomy">
+              <li class="icon-list__item">
+                <svg class="icon-list__icon" aria-hidden="true" focusable="false"><use href="#icon-play" /></svg>
+                Collect attestations within the registry in order to build up your reputation, and unlock its value
+              </li>
+              <li class="icon-list__item">
+                <svg class="icon-list__icon" aria-hidden="true" focusable="false"><use href="#icon-play" /></svg>
+                Tap into a diverse ecosystem of attestation issuers
+              </li>
+              <li class="icon-list__item">
+                <svg class="icon-list__icon" aria-hidden="true" focusable="false"><use href="#icon-play" /></svg>
+                Attestations you acquire can be used by any dapps across the ecosystem
+              </li>
+              <li class="icon-list__item">
+                <svg class="icon-list__icon" aria-hidden="true" focusable="false"><use href="#icon-play" /></svg>
+                Seamlessly link attestations together to compose your own on-chain profile
+              </li>
+              <li class="icon-list__item">
+                <svg class="icon-list__icon" aria-hidden="true" focusable="false"><use href="#icon-play" /></svg>
+                Revoke or replace any attestation whenever you want to
+              </li>
+            </ul>
+          </article>
+
+          <article class="audience-card audience-card--muted">
+            <h3 class="heading-md">For Dapps</h3>
+            <ul class="icon-list icon-list--roomy icon-list--muted-icons">
+              <li class="icon-list__item">
+                <svg class="icon-list__icon" aria-hidden="true" focusable="false"><use href="#icon-play" /></svg>
+                Filter out sybils and bots in an inclusive and user friendly way
+              </li>
+              <li class="icon-list__item">
+                <svg class="icon-list__icon" aria-hidden="true" focusable="false"><use href="#icon-play" /></svg>
+                Gain insights into your customer base and the users of the network
+              </li>
+              <li class="icon-list__item">
+                <svg class="icon-list__icon" aria-hidden="true" focusable="false"><use href="#icon-play" /></svg>
+                Offer promos, discounts and rewards to users of specific attestations
+              </li>
+              <li class="icon-list__item">
+                <svg class="icon-list__icon" aria-hidden="true" focusable="false"><use href="#icon-play" /></svg>
+                Source any type of data you need from many attestation issuers
+              </li>
+              <li class="icon-list__item">
+                <svg class="icon-list__icon" aria-hidden="true" focusable="false"><use href="#icon-play" /></svg>
+                Issue your own attestations that are easily discovered and used by any dapp across the network
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--teal section--partners" aria-labelledby="partners-title">
+        <div class="container partners">
+          <h2 class="partners__title" id="partners-title">Built with 💜 by the following teams:</h2>
+          <ul class="partners__list">
+            <li class="partners__item partners__item--small">
+              <img src="assets/images/partner-linea.webp" width="400" height="116" alt="Linea" loading="lazy" />
+            </li>
+            <li class="partners__item">
+              <img src="assets/images/partner-clique.webp" width="400" height="114" alt="Clique" loading="lazy" />
+            </li>
+            <li class="partners__item">
+              <img src="assets/images/partner-aspecta.svg" width="174" height="24" alt="Aspecta" loading="lazy" />
+            </li>
+            <li class="partners__item">
+              <img src="assets/images/partner-hapi.webp" width="400" height="171" alt="HAPI" loading="lazy" />
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section section--docs" aria-labelledby="docs-title">
+        <div class="container feature">
+          <div class="feature__content">
+            <p class="eyebrow">Tutorials and documentation</p>
+            <h2 class="heading-xl" id="docs-title">Easy to get started with</h2>
+            <p class="text-body text-muted">
+              There is documentation to help developers to get started, including code examples, example dapps, and
+              end-to-end walkthrough tutorials. Join our Discord and ask any of the developers in the community any
+              questions you might have.
+            </p>
+            <ul class="icon-list">
+              <li class="icon-list__item">
+                <svg class="icon-list__icon" aria-hidden="true" focusable="false"><use href="#icon-check" /></svg>
+                Standard library of plug and play modules
+              </li>
+              <li class="icon-list__item">
+                <svg class="icon-list__icon" aria-hidden="true" focusable="false"><use href="#icon-check" /></svg>
+                End to end tutorials and code examples
+              </li>
+            </ul>
+          </div>
+          <div class="media-card media-card--stretch">
+            <img
+              class="media-card__image media-card__image--code"
+              src="assets/images/sdk-code-example.webp"
+              width="1034"
+              height="433"
+              loading="lazy"
+              alt="Code example: const txHash = await veraxSdk.portal.attest(portalId, { schemaId, expirationDate: Math.floor(Date.now() / 1000) + 2592000, subject: address, attestationData: [{ hasCompletedTutorial: true }] }, []);"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--light section--explorer" aria-labelledby="explorer-title">
+        <div class="container feature">
+          <div class="media-card media-card--sand">
+            <img
+              class="media-card__image"
+              src="assets/images/explorer-screenshot.webp"
+              width="1034"
+              height="791"
+              loading="lazy"
+              alt="Verax Explorer showing the “My attestations” tab with a list of attestations and their portals"
+            />
+          </div>
+          <div class="feature__content">
+            <p class="eyebrow">Explorer</p>
+            <h2 class="heading-xl" id="explorer-title">Access your attestations</h2>
+            <p class="text-body text-muted">
+              Use the explorer app to view all your attestations issued in one place. Explore the ecosystem of available
+              attestations and attestation issuers. As an issuer, find re-usable schemas and module for your
+              attestations.
+            </p>
+            <ul class="icon-list">
+              <li class="icon-list__item">
+                <svg class="icon-list__icon" aria-hidden="true" focusable="false"><use href="#icon-check" /></svg>
+                Search by attestation id or description
+              </li>
+              <li class="icon-list__item">
+                <svg class="icon-list__icon" aria-hidden="true" focusable="false"><use href="#icon-check" /></svg>
+                See all your attestations in one place
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--community" aria-labelledby="community-title">
+        <div class="container feature">
+          <div class="feature__content">
+            <p class="eyebrow">Community maintained</p>
+            <h2 class="heading-xl" id="community-title">Join an open collective</h2>
+            <p class="text-body text-muted">
+              Verax is a collective that is open to anyone that is interested in joining, contributing to, and
+              developing new features or tools. If you see a way to use the technology to help your community or team,
+              then please come and join the conversation.
+            </p>
+            <ul class="icon-list">
+              <li class="icon-list__item">
+                <svg class="icon-list__icon" aria-hidden="true" focusable="false"><use href="#icon-check" /></svg>
+                Transparent governance process
+              </li>
+              <li class="icon-list__item">
+                <svg class="icon-list__icon" aria-hidden="true" focusable="false"><use href="#icon-check" /></svg>
+                Open to anyone to join and collaborate
+              </li>
+            </ul>
+          </div>
+          <div class="media-card">
+            <img
+              class="media-card__image"
+              src="assets/images/community-forum-screenshot.webp"
+              width="1034"
+              height="791"
+              loading="lazy"
+              alt="Verax governance forum listing the Verax Improvement Proposals and Research and Development categories"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--teal section--stats" aria-labelledby="stats-title">
+        <div class="container">
+          <div class="stats__header">
+            <h2 class="heading-xl" id="stats-title">Verax is Growing</h2>
+            <p class="stats__lead">Tap into a rapidly expanding resource of rich, on-chain attestation data</p>
+          </div>
+          <ul class="stats">
+            <li class="stat">
+              <p class="stat__value">6.3 million</p>
+              <h3 class="stat__label">Attestations on Linea mainnet</h3>
+              <p class="stat__description">
+                While the vast majority of attestations are proof-of-humanity attestations, we are seeing a growing
+                number and diversity in other types of attestations
+              </p>
+            </li>
+            <li class="stat">
+              <p class="stat__value">1.6 million</p>
+              <h3 class="stat__label">Unique attestation subjects</h3>
+              <p class="stat__description">
+                As most of the attestations issued thus far have been proof-of-humanity attestations, we estimate that
+                we have over a million unique users
+              </p>
+            </li>
+            <li class="stat">
+              <p class="stat__value">20</p>
+              <h3 class="stat__label">Attestation Issuers</h3>
+              <p class="stat__description">
+                The issuers of attestations into Linea are all professional teams that specialize in high-quality
+                reputation scores and zkp-powered attestations
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container container--wide">
+        <div class="site-footer__grid">
+          <nav class="site-footer__column" aria-labelledby="footer-resources-title">
+            <h2 class="site-footer__title" id="footer-resources-title">Resources</h2>
+            <ul class="footer-links">
+              <li>
+                <a class="footer-links__link" href="https://explorer.ver.ax/" target="_blank" rel="noopener noreferrer"
+                  >Explorer</a
+                >
+              </li>
+              <li>
+                <a
+                  class="footer-links__link"
+                  href="https://github.com/Consensys/linea-attestation-registry"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Source Code</a
+                >
+              </li>
+              <li>
+                <a class="footer-links__link" href="https://docs.ver.ax/" target="_blank" rel="noopener noreferrer"
+                  >Documentation</a
+                >
+              </li>
+              <li>
+                <a class="footer-links__link" href="https://community.ver.ax/" target="_blank" rel="noopener noreferrer"
+                  >Governance Forum</a
+                >
+              </li>
+            </ul>
+          </nav>
+
+          <div class="site-footer__column">
+            <h2 class="site-footer__title">Community</h2>
+            <ul class="social-links">
+              <li>
+                <a
+                  class="social-links__link"
+                  href="https://github.com/Consensys/linea-attestation-registry"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <svg class="social-links__icon" aria-hidden="true" focusable="false"><use href="#icon-github" /></svg>
+                  <span class="social-links__label">GitHub</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  class="social-links__link"
+                  href="https://twitter.com/VeraxRegistry"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <svg class="social-links__icon" aria-hidden="true" focusable="false">
+                    <use href="#icon-twitter" />
+                  </svg>
+                  <span class="social-links__label">Twitter</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  class="social-links__link"
+                  href="https://discord.gg/Sq4EmYdBEk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <svg class="social-links__icon" aria-hidden="true" focusable="false">
+                    <use href="#icon-discord" />
+                  </svg>
+                  <span class="social-links__label">Discord</span>
+                </a>
+              </li>
+            </ul>
+            <p class="site-footer__note">
+              The Verax Attestation Registry is developed as a public good for the Linea ecosystem and is open source
+              under the MIT license. Please see the source code and documentation for more details.
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
