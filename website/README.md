@@ -39,7 +39,44 @@ Then open <http://localhost:4173/>.
 
 Production is deployed from the `dev` branch by
 [`.github/workflows/website-pages.yml`](../.github/workflows/website-pages.yml). There is no build step: the workflow
-copies `website/` and force-pushes the orphan **`gh-pages`** branch.
+archives `website/`, uploads a Pages artifact, and runs `deploy-pages`.
+
+We do **not** use `actions/upload-pages-artifact`: that composite action references `actions/upload-artifact@v4`
+(without a commit SHA), which Consensys-Incorporated action policy rejects. The workflow calls
+`actions/upload-artifact@<full-sha>` directly with the same tar layout Pages expects.
+
+### One-time repository settings
+
+In **Settings → Pages** for this repository:
+
+1. **Build and deployment → Source**: **GitHub Actions**.
+2. **Custom domain**: `ver.ax` (must match the canonical URL in `index.html` and `sitemap.xml`).
+3. **Enforce HTTPS**: enabled after DNS validation succeeds.
+
+In **Settings → Actions → General → Workflow permissions**, allow workflows to publish Pages (`pages: write`, typically
+**Read and write** permissions).
+
+The first successful run uses the **`github-pages`** environment; approve it if your org requires environment review.
+
+### DNS (`ver.ax`)
+
+At your DNS provider, remove legacy records pointing to the previous host. Configure GitHub’s recommended records (see
+[GitHub Pages custom domain docs](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site)):
+
+| Host  | Type    | Value                                                                      |
+| ----- | ------- | -------------------------------------------------------------------------- |
+| `@`   | `A`     | `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` |
+| `www` | `CNAME` | `consensys-incorporated.github.io` (optional)                              |
+
+Wait until **Settings → Pages** validates the domain, then verify `https://ver.ax/` and `https://ver.ax/robots.txt`.
+
+### Rollback
+
+Re-run a previous successful **Website GitHub Pages** workflow from **Actions**, or revert the `website/` commit on
+`dev` and let the workflow republish.
+
+Other Verax surfaces (for example [explorer.ver.ax](https://explorer.ver.ax)) stay on their own hosts; only the apex
+marketing site uses GitHub Pages.
 
 ## Quality checks
 

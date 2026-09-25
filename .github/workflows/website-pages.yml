@@ -16,34 +16,49 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
+      pages: write
+      id-token: write
     steps:
       - name: Check out the repo
         uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
-      - name: Publish static site to gh-pages branch
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Archive static site
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          tar \
+            --dereference --hard-dereference \
+            --directory "website" \
+            -cvf "${RUNNER_TEMP}/artifact.tar" \
+            --exclude=.git \
+            --exclude=.github \
+            .
 
-          site_dir="$(mktemp -d)"
-          cp -R website/. "$site_dir/"
+      - name: Upload Pages artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: github-pages
+          path: ${{ runner.temp }}/artifact.tar
+          retention-days: 1
+          if-no-files-found: error
 
-          cd "$site_dir"
-          git init -b gh-pages
-          git add -A
-          git commit -m "Deploy website from ${GITHUB_SHA}"
-
-          git remote add origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          git push --force origin gh-pages
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4.0.5
 
       - name: Add website deployment summary
         run: |
           echo "## Website GitHub Pages deployment result" >> $GITHUB_STEP_SUMMARY
-          echo "✅ Published branch \`gh-pages\` from commit \`${GITHUB_SHA}\`" >> $GITHUB_STEP_SUMMARY
-          echo "Custom domain: https://ver.ax/" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Published \`${{ steps.deployment.outputs.page_url }}\`" >> $GITHUB_STEP_SUMMARY
