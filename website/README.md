@@ -39,15 +39,7 @@ Then open <http://localhost:4173/>.
 
 Production is deployed from the `dev` branch by
 [`.github/workflows/website-pages.yml`](../.github/workflows/website-pages.yml). There is no build step: the workflow
-uploads the `website/` folder as the Pages artifact.
-
-### Rollback
-
-Re-run a previous successful **Website GitHub Pages** workflow from the **Actions** tab, or revert the `website/` commit
-on `dev` and let the workflow republish. For DNS rollback, restore the previous records at your registrar.
-
-Other Verax surfaces (for example [explorer.ver.ax](https://explorer.ver.ax)) stay on their own hosts and DNS names;
-only the apex marketing site uses GitHub Pages.
+archives `website/`, uploads a Pages artifact, and runs `deploy-pages`.
 
 ## Quality checks
 
