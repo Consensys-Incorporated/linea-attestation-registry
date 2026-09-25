@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.ver.ax/sitemap.xml
+Sitemap: https://ver.ax/sitemap.xml

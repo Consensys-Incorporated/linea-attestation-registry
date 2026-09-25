@@ -1,6 +1,6 @@
 # Verax website
 
-Static landing page served at [ver.ax](https://www.ver.ax/). It replaces the page previously generated and hosted by
+Static landing page served at [ver.ax](https://ver.ax/). It replaces the page previously generated and hosted by
 onepage.io.
 
 The site is plain HTML, CSS and a small vanilla JavaScript file: there is no build step and no runtime dependency. All
@@ -15,6 +15,7 @@ website/
 ├── main.js             # Mobile navigation menu
 ├── robots.txt
 ├── sitemap.xml
+├── .nojekyll           # Skip Jekyll on GitHub Pages
 └── assets/
     ├── fonts/          # Wix Madefor Display & Text (woff2) + OFL license
     └── images/         # Logos, partner logos, screenshots
@@ -34,10 +35,19 @@ python3 -m http.server 4173
 
 Then open <http://localhost:4173/>.
 
-## Deployment
+## Deployment (GitHub Pages)
 
-Deploy the content of `website/` as-is to any static hosting provider and point the `ver.ax` / `www.ver.ax` DNS records
-to it. The canonical URL declared in `index.html` and `sitemap.xml` is `https://www.ver.ax/`.
+Production is deployed from the `dev` branch by
+[`.github/workflows/website-pages.yml`](../.github/workflows/website-pages.yml). There is no build step: the workflow
+uploads the `website/` folder as the Pages artifact.
+
+### Rollback
+
+Re-run a previous successful **Website GitHub Pages** workflow from the **Actions** tab, or revert the `website/` commit
+on `dev` and let the workflow republish. For DNS rollback, restore the previous records at your registrar.
+
+Other Verax surfaces (for example [explorer.ver.ax](https://explorer.ver.ax)) stay on their own hosts and DNS names;
+only the apex marketing site uses GitHub Pages.
 
 ## Quality checks
 
