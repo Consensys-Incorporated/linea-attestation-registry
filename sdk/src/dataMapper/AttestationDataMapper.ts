@@ -194,8 +194,7 @@ export default class AttestationDataMapper extends BaseDataMapper<
           const responseContent = response.toString();
           if (responseContent.startsWith("0x")) {
             const offChainDataSchema = (await this.veraxSdk.schema.findOneById(attestation.offchainData.schemaId)) as
-              | Schema
-              | undefined;
+              Schema | undefined;
 
             if (!offChainDataSchema) {
               this.setStructuredOffchainDataError(attestation.offchainData, {

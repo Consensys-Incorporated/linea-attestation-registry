@@ -67,7 +67,7 @@
     "@types/node": "catalog:types",
     "dotenv": "17.4.2",
     "ethers": "6.17.0",
-    "hardhat": "2.28.6",
+    "hardhat": "2.29.1",
     "hardhat-contract-sizer": "2.10.1",
     "solhint": "catalog:solidity",
     "solhint-plugin-prettier": "0.1.0"

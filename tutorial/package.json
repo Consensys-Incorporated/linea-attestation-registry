@@ -22,27 +22,27 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "7.2.0",
-    "@fortawesome/free-brands-svg-icons": "7.2.0",
-    "@fortawesome/free-solid-svg-icons": "7.2.0",
-    "@fortawesome/react-fontawesome": "3.3.1",
-    "@reown/appkit": "1.8.21",
-    "@reown/appkit-adapter-wagmi": "1.8.21",
+    "@fortawesome/fontawesome-svg-core": "7.3.1",
+    "@fortawesome/free-brands-svg-icons": "7.3.1",
+    "@fortawesome/free-solid-svg-icons": "7.3.1",
+    "@fortawesome/react-fontawesome": "3.5.0",
+    "@reown/appkit": "1.8.24",
+    "@reown/appkit-adapter-wagmi": "1.8.24",
     "@tanstack/react-query": "catalog:react",
     "@verax-attestation-registry/verax-sdk": "5.4.0",
     "react": "catalog:react",
     "react-dom": "catalog:react",
     "react-json-view-lite": "2.5.0",
     "viem": "catalog:web3",
-    "wagmi": "3.6.16"
+    "wagmi": "3.7.7"
   },
   "devDependencies": {
     "@types/react": "catalog:react",
     "@types/react-dom": "catalog:react",
-    "@vitejs/plugin-react": "6.0.2",
+    "@vitejs/plugin-react": "6.1.1",
     "prettier": "catalog:core",
     "typescript": "catalog:core",
-    "vite": "8.0.16",
+    "vite": "8.3.1",
     "vite-plugin-radar": "catalog:react"
   }
 }
