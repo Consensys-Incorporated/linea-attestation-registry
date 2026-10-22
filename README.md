@@ -58,7 +58,7 @@ interest on EVM chains, designed to improve discoverability and reuse across app
 
 CI reads Node.js and pnpm directly from the root `package.json`. On this branch, that means:
 
-- Node.js `24.18.0`
+- Node.js `24.22.1`
 - pnpm `11.9.0`
 
 Install dependencies once from the monorepo root:

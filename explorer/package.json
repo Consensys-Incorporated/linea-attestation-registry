@@ -16,7 +16,7 @@
   "author": "Consensys",
   "type": "module",
   "engines": {
-    "node": "24.18.0",
+    "node": "24.22.1",
     "pnpm": "11.9.0"
   },
   "scripts": {
