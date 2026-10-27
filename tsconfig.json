@@ -9,7 +9,7 @@
     "moduleResolution": "NodeNext",
     "noEmit": true
   },
-  "references": [{ "path": "contracts" }, { "path": "explorer" }, { "path": "sdk" }, { "path": "subgraph" }],
+  "references": [{ "path": "contracts" }, { "path": "explorer" }, { "path": "sdk" }],
   "include": [],
   "exclude": ["node_modules"]
 }
