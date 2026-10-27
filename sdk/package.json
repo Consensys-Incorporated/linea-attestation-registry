@@ -85,7 +85,7 @@
     "babel-plugin-transform-import-meta": "2.3.3",
     "dotenv": "17.4.2",
     "jest": "30.5.2",
-    "ts-jest": "29.4.14",
+    "ts-jest": "29.4.15",
     "tsup": "8.5.1",
     "tsx": "4.23.15",
     "typescript": "catalog:core",
