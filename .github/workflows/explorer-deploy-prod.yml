@@ -8,7 +8,7 @@ permissions: {} # lock everything by default (least-privilege)
 jobs:
   deploy-explorer-prod:
     if: >-
-      github.ref == 'refs/heads/main' && (
+      github.ref == 'refs/heads/dev' && (
         github.actor == 'alainncls' || github.actor == 'satyajeetkolhapure' || github.actor == 'orbmis' ||
         github.actor == 'arthur-remy' || github.actor == 'ars9' || github.actor == 'Solniechniy'
       )
