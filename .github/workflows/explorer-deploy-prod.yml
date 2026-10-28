@@ -36,7 +36,7 @@ jobs:
           VITE_THE_GRAPH_API_KEY: ${{ secrets.VITE_THE_GRAPH_API_KEY }}
 
       - name: Deploy explorer to Netlify
-        run: pnpm exec netlify deploy --dir=dist --site="$NETLIFY_SITE_ID" --prod --no-build
+        run: pnpm exec netlify deploy --dir="$PWD/dist" --site="$NETLIFY_SITE_ID" --prod --no-build
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
