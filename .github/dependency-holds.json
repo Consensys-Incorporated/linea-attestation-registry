@@ -1,0 +1,20 @@
+{
+  "comment": [
+    "Version ceilings for dependency refreshes.",
+    "",
+    "A hold keeps a package on the last version that works when a newer release is",
+    "broken for this repository. Holds are raised and cleared by humans, in review:",
+    "raise maxVersion (or delete the entry) and let validation prove the new version.",
+    "recheckAfter is a reminder, not an expiry."
+  ],
+  "holds": [
+    {
+      "packages": ["viem"],
+      "maxVersion": "2.55.19",
+      "reason": "viem 2.56.0 removed the ./tempo/zones export, which @wagmi/core 3.5.0 (pulled by porto through @wagmi/connectors) still imports, so the explorer Vite build fails to resolve it.",
+      "evidence": "pnpm --filter verax-explorer build: \"./tempo/zones\" is not exported under the conditions [\"module\", \"browser\", \"production\", \"import\"] from package viem",
+      "clearWhen": "The explorer web3 stack no longer resolves @wagmi/core 3.5.0 (see the wagmi 3 migration in #1053). Verify by raising maxVersion and building explorer and tutorial.",
+      "recheckAfter": "2026-11-27"
+    }
+  ]
+}
