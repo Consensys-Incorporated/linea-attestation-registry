@@ -24,7 +24,7 @@ env:
 jobs:
   build-contracts:
     runs-on:
-      ${{ github.event.pull_request.head.repo.fork && 'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
+      ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository && 'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
     permissions:
       contents: read
 
@@ -57,7 +57,7 @@ jobs:
 
   test-contracts:
     runs-on:
-      ${{ github.event.pull_request.head.repo.fork && 'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
+      ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository && 'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
     permissions:
       contents: read
 
@@ -92,7 +92,7 @@ jobs:
 
   coverage-contracts:
     runs-on:
-      ${{ github.event.pull_request.head.repo.fork && 'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
+      ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository && 'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
     permissions:
       contents: read
 
@@ -165,7 +165,7 @@ jobs:
 
   upgradeability-contracts:
     runs-on:
-      ${{ github.event.pull_request.head.repo.fork && 'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
+      ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository && 'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
     permissions:
       contents: read
 
@@ -303,7 +303,7 @@ jobs:
 
   size-contracts:
     runs-on:
-      ${{ github.event.pull_request.head.repo.fork && 'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
+      ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository && 'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
     permissions:
       contents: read
 
