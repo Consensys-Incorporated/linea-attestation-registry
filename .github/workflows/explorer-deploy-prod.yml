@@ -12,7 +12,7 @@ jobs:
         github.actor == 'alainncls' || github.actor == 'VGau' || github.actor == 'eloi010'
       )
 
-    runs-on: ubuntu-latest
+    runs-on: gha-runner-scale-set-ubuntu-24-amd64-med
     environment: explorer-production
     permissions:
       contents: read

@@ -19,7 +19,7 @@ jobs:
         github.actor == 'arthur-remy'
       )
 
-    runs-on: ubuntu-latest
+    runs-on: gha-runner-scale-set-ubuntu-24-amd64-small
     environment: production-release
     permissions:
       contents: read

@@ -20,7 +20,7 @@ concurrency:
 
 jobs:
   test-subgraph:
-    runs-on: ubuntu-22.04
+    runs-on: ${{ github.event.pull_request.head.repo.fork && 'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
     permissions:
       contents: read
 

@@ -20,7 +20,7 @@ concurrency:
 
 jobs:
   unit-test-sdk:
-    runs-on: ubuntu-latest
+    runs-on: ${{ github.event.pull_request.head.repo.fork && 'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
     permissions:
       contents: read
 
@@ -76,7 +76,7 @@ jobs:
           echo "✅ Coverage not uploaded to Codecov" >> $GITHUB_STEP_SUMMARY
 
   integration-test-sdk:
-    runs-on: ubuntu-latest
+    runs-on: ${{ github.event.pull_request.head.repo.fork && 'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
     permissions:
       contents: read
 
