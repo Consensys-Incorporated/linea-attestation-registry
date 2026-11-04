@@ -23,7 +23,8 @@ env:
 
 jobs:
   build-contracts:
-    runs-on: ${{ github.event.pull_request.head.repo.fork && 'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
+    runs-on:
+      ${{ github.event.pull_request.head.repo.fork && 'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
     permissions:
       contents: read
 
@@ -55,7 +56,8 @@ jobs:
           echo "✅ Passed" >> $GITHUB_STEP_SUMMARY
 
   test-contracts:
-    runs-on: ${{ github.event.pull_request.head.repo.fork && 'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
+    runs-on:
+      ${{ github.event.pull_request.head.repo.fork && 'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
     permissions:
       contents: read
 
@@ -89,7 +91,8 @@ jobs:
           echo "✅ Passed" >> $GITHUB_STEP_SUMMARY
 
   coverage-contracts:
-    runs-on: ${{ github.event.pull_request.head.repo.fork && 'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
+    runs-on:
+      ${{ github.event.pull_request.head.repo.fork && 'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
     permissions:
       contents: read
 
@@ -161,7 +164,8 @@ jobs:
           echo "✅ No coverage to upload to Codecov" >> $GITHUB_STEP_SUMMARY
 
   upgradeability-contracts:
-    runs-on: ${{ github.event.pull_request.head.repo.fork && 'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
+    runs-on:
+      ${{ github.event.pull_request.head.repo.fork && 'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
     permissions:
       contents: read
 
@@ -298,7 +302,8 @@ jobs:
           echo "✅ No change detected in the contracts" >> $GITHUB_STEP_SUMMARY
 
   size-contracts:
-    runs-on: ${{ github.event.pull_request.head.repo.fork && 'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
+    runs-on:
+      ${{ github.event.pull_request.head.repo.fork && 'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
     permissions:
       contents: read
 
