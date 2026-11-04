@@ -16,7 +16,8 @@ concurrency:
 jobs:
   deploy-explorer-preview:
     runs-on:
-      ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository && 'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
+      ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository &&
+      'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
     permissions:
       contents: write
       deployments: write
