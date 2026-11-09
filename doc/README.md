@@ -2,7 +2,7 @@
 
 Source of the Verax documentation, built with [Docusaurus](https://docusaurus.io/).
 
-- Pages live in `docs/`. The sidebar order is defined in `sidebars.ts`.
+- Pages live in `content/`. The sidebar order is defined in `sidebars.ts`.
 - Images live in `static/img/`.
 
 ## Commands
