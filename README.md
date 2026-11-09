@@ -61,6 +61,9 @@ CI reads Node.js and pnpm directly from the root `package.json`. On this branch,
 - Node.js `24.22.1`
 - pnpm `12.17.0`
 
+pnpm does not switch to the pinned version by itself (`pmOnFail: ignore` in `pnpm-workspace.yaml` keeps the lockfile
+readable by GitHub's dependency graph). Install it with `corepack enable` or `npm install -g pnpm@12.17.0`.
+
 Install dependencies once from the monorepo root:
 
 ```bash
