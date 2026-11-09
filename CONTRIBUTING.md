@@ -23,7 +23,9 @@ The repository currently exposes the following contributor-facing checks and aut
 - `sdk.yml` runs unit and integration tests for `sdk/`.
 - `subgraph.yml` builds and tests `subgraph/`.
 - `explorer-build.yml` builds `explorer/`.
-- `explorer-deploy-preview.yml` publishes a preview deployment for pull requests that touch `explorer/`.
+- `doc-build.yml` type-checks and builds `doc/`.
+- Vercel publishes preview deployments of `website/`, `explorer/`, and `doc/` for pull requests that touch them, and
+  deploys production on each merge to `dev`.
 - `releaser.yml` is a maintainer-only manual release flow.
 
 Tutorial changes do not currently have a dedicated GitHub Actions workflow, so contributors should run its local

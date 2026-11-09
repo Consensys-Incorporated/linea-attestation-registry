@@ -14,7 +14,6 @@ allowBuilds:
   core-js: false
   esbuild: true
   keccak: true
-  netlify-cli: false
   node-libcurl: true
   secp256k1: true
   sharp: true

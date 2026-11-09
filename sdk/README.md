@@ -4,7 +4,7 @@ This workspace owns the TypeScript SDK used to read and write Verax data from ba
 apps.
 
 This README is maintainer-oriented. For end-user integration guidance, see the published docs at
-[docs.ver.ax](https://docs.ver.ax/verax-documentation/developer-guides/using-the-sdk).
+[docs.ver.ax](https://docs.ver.ax/developer-guides/using-the-sdk).
 
 ## Local Setup
 

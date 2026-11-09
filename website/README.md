@@ -15,7 +15,6 @@ website/
 ├── main.js             # Mobile navigation menu
 ├── robots.txt
 ├── sitemap.xml
-├── .nojekyll           # Skip Jekyll on GitHub Pages
 └── assets/
     ├── fonts/          # Wix Madefor Display & Text (woff2) + OFL license
     └── images/         # Logos, partner logos, screenshots
@@ -35,11 +34,10 @@ python3 -m http.server 4173
 
 Then open <http://localhost:4173/>.
 
-## Deployment (GitHub Pages)
+## Deployment (Vercel)
 
-Production is deployed from the `dev` branch by
-[`.github/workflows/website-pages.yml`](../.github/workflows/website-pages.yml). There is no build step: the workflow
-archives `website/`, uploads a Pages artifact, and runs `deploy-pages`.
+The Vercel Git integration deploys `website/` as a static site, with no build step. Each pull request that touches
+`website/` gets a preview deployment, and each merge to `dev` deploys production.
 
 ## Quality checks
 

@@ -62,7 +62,7 @@ export const INFO_LIST: IInfoListItem[] = [
   {
     title: t("common.routes.info.documentation"),
     logo: GitbookIcon,
-    url: "https://docs.ver.ax/verax-documentation/",
+    url: "https://docs.ver.ax/",
   },
 ];
 
