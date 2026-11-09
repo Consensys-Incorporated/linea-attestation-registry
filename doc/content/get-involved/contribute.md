@@ -20,7 +20,7 @@ truth.
 
 For documentation work:
 
-1. edit files under `doc/docs/`;
+1. edit files under `doc/content/`;
 2. keep examples aligned with contracts, SDK exports, explorer behavior, and subgraph schema;
 3. prefer the monorepo over older parallel documentation repos or stale external tutorials.
 
