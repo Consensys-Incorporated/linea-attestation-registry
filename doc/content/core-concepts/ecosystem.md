@@ -2,7 +2,7 @@
 
 Verax is best understood as shared attestation infrastructure rather than as a single dApp.
 
-<figure><img src="../.gitbook/assets/Verax_Overview.png" alt=""><figcaption><p>A layered view of the Verax ecosystem: protocol, access, builders, and research/consumption.</p></figcaption></figure>
+<figure><img src={require('@site/static/img/Verax_Overview.png').default} alt="" /><figcaption><p>A layered view of the Verax ecosystem: protocol, access, builders, and research/consumption.</p></figcaption></figure>
 
 ## Protocol layer
 
@@ -56,7 +56,7 @@ Another useful lens is to think of Verax as shared reputation infrastructure:
 - consumers and researchers derive meaning from public, queryable state;
 - applications turn that shared state into product decisions, discovery, or analytics.
 
-<figure><img src="../.gitbook/assets/high-level-flow-03.drawio.png" alt=""><figcaption><p>Verax can also be read as a shared reputation and discovery substrate, not only as a contract stack.</p></figcaption></figure>
+<figure><img src={require('@site/static/img/high-level-flow-03.drawio.png').default} alt="" /><figcaption><p>Verax can also be read as a shared reputation and discovery substrate, not only as a contract stack.</p></figcaption></figure>
 
 ## Important distinction: protocol data vs editorial surfaces
 

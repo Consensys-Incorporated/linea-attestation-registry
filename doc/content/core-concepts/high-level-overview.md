@@ -25,7 +25,7 @@ Verax is designed around a simple flow:
 This is the main architectural difference from simpler attestation systems: Verax separates storage, validation, and
 issuer-specific business logic.
 
-<figure><img src="../.gitbook/assets/high-level-flow-01.drawio.png" alt=""><figcaption><p>Users interact with applications, and applications publish attestations through their portal contract.</p></figcaption></figure>
+<figure><img src={require('@site/static/img/high-level-flow-01.drawio.png').default} alt="" /><figcaption><p>Users interact with applications, and applications publish attestations through their portal contract.</p></figcaption></figure>
 
 ## Core building blocks
 
@@ -61,7 +61,7 @@ Modules are small reusable contracts that validate incoming attestation requests
 - checking that a subject is an issuer;
 - enforcing a fee.
 
-<figure><img src="../.gitbook/assets/high-level-flow.drawio.png" alt=""><figcaption><p>A portal can chain several modules before writing the attestation into the shared registry.</p></figcaption></figure>
+<figure><img src={require('@site/static/img/high-level-flow.drawio.png').default} alt="" /><figcaption><p>A portal can chain several modules before writing the attestation into the shared registry.</p></figcaption></figure>
 
 ### Attestations
 
@@ -79,7 +79,7 @@ The `subject` is stored as raw `bytes`, which means it can represent:
 Schemas, modules, and portals become much more useful once they are registered and discoverable inside the same Verax
 deployment.
 
-<figure><img src="../.gitbook/assets/high-level-flow-02.drawio.png" alt=""><figcaption><p>Verax separates discoverability registries from the attestation store itself.</p></figcaption></figure>
+<figure><img src={require('@site/static/img/high-level-flow-02.drawio.png').default} alt="" /><figcaption><p>Verax separates discoverability registries from the attestation store itself.</p></figcaption></figure>
 
 ## Why a shared registry matters
 

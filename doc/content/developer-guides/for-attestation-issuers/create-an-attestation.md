@@ -57,14 +57,18 @@ await veraxSdk.portal.attest(
 
 ## Explorer or manual contract call
 
-<figure><img src="../../.gitbook/assets/create_attestation.png" alt="" width="217"><figcaption><p>Example explorer form for calling <code>attest</code> on a portal contract.</p></figcaption></figure>
+<figure><img src={require('@site/static/img/create_attestation.png').default} alt="" width="217" /><figcaption><p>Example explorer form for calling <code>attest</code> on a portal contract.</p></figcaption></figure>
 
 1. Open your portal contract in the network explorer.
 2. Go to the write interface for that portal contract.
 3. Call `attest(attestationPayload, validationPayloads)`.
 4. Read the emitted `AttestationRegistered(attestationId)` event if you need the new ID.
 
-{% hint style="warning" %} Use the portal address itself here, not the registry address. {% endhint %}
+:::warning
+
+Use the portal address itself here, not the registry address.
+
+:::
 
 ## Notes
 

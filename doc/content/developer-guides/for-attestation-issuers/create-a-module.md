@@ -63,8 +63,12 @@ contract ExampleModule is AbstractModuleV2 {
 - If you rely on `msg.value`, remember that only one module in a chain should interpret it.
 - Bulk module execution currently passes `0` as value in `ModuleRegistry.bulkRunModulesV2(...)`.
 
-{% hint style="warning" %} If your module depends on fees or any other payable behavior, remember that bulk module
-execution currently passes `0` as value. {% endhint %}
+:::warning
+
+If your module depends on fees or any other payable behavior, remember that bulk module execution currently passes `0`
+as value.
+
+:::
 
 ## Next step
 

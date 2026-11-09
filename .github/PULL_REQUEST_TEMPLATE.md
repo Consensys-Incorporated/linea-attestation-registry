@@ -22,7 +22,7 @@ Closes #
 - [ ] Subgraph
 - [ ] Explorer
 - [ ] Tutorial
-- [ ] GitBook source (`doc/`)
+- [ ] Documentation site (`doc/`)
 
 ## Validation
 

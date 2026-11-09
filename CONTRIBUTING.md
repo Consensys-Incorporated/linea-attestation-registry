@@ -65,9 +65,10 @@ Run the relevant commands for the areas you changed.
 | `subgraph/`  | `pnpm --filter linea-attestation-registry-subgraph build:linea-sepolia`, `test`                    |
 | `explorer/`  | `pnpm --filter verax-explorer lint`, `build`                                                       |
 | `tutorial/`  | `pnpm --filter @verax-attestation-registry/verax-tutorial build`                                   |
+| `doc/`       | `pnpm --filter @verax-attestation-registry/verax-doc dev`, `build`                                 |
 
 If a change affects public behavior, deployment instructions, or contributor workflow, update the relevant README and
-the GitBook source under `doc/` when needed.
+the documentation pages under `doc/content/` when needed.
 
 ## Documentation Changes
 

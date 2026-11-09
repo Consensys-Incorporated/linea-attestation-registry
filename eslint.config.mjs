@@ -19,6 +19,7 @@ export default tseslint.config(
       "**/typechain-types/**",
       "**/generated/**",
       "**/.graphclient/**",
+      "**/.docusaurus/**",
       "**/cache_forge/**",
       "**/cache_hardhat/**",
       "**/artifacts/**",

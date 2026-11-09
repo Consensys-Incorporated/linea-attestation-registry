@@ -41,7 +41,7 @@ await veraxSdk.portal.register(
 
 ## Explorer or manual contract call
 
-<figure><img src="../../.gitbook/assets/register_portal.png" alt="" width="190"><figcaption><p>Example explorer form for calling <code>register</code> on <code>PortalRegistry</code>.</p></figcaption></figure>
+<figure><img src={require('@site/static/img/register_portal.png').default} alt="" width="190" /><figcaption><p>Example explorer form for calling <code>register</code> on <code>PortalRegistry</code>.</p></figcaption></figure>
 
 1. Find the `PortalRegistry` address in [Networks and Addresses](../networks-and-addresses.md).
 2. Open the contract page in your network explorer.

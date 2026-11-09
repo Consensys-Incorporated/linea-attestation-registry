@@ -34,8 +34,12 @@ This both deploys and registers a `DefaultPortalV2`.
 | `isRevocable` | `bool`      | Whether issued attestations can later be revoked |
 | `ownerName`   | `string`    | Human-readable issuer name                       |
 
-{% hint style="info" %} `deployDefaultPortal(...)` already registers the new portal. You only need a separate
-registration step for custom portal contracts. {% endhint %}
+:::info
+
+`deployDefaultPortal(...)` already registers the new portal. You only need a separate registration step for custom
+portal contracts.
+
+:::
 
 ### SDK
 
@@ -69,8 +73,12 @@ The constructor takes:
 
 Use the `Router`, not raw registry addresses, so your portal resolves the right registries for that deployment.
 
-{% hint style="warning" %} Use the deployment's `Router` address, not hard-coded registry addresses, when building a
-custom portal. That keeps the portal correctly wired to the target Verax instance. {% endhint %}
+:::warning
+
+Use the deployment's `Router` address, not hard-coded registry addresses, when building a custom portal. That keeps the
+portal correctly wired to the target Verax instance.
+
+:::
 
 ## Hooks
 

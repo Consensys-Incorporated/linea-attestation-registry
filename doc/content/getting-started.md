@@ -9,8 +9,12 @@ Verax supports two common paths:
 
 This is the fastest path for most teams.
 
-{% hint style="info" %} Choose this path if you want to issue or consume attestations on an existing Verax network
-without operating contracts, subgraph, or explorer infrastructure yourself. {% endhint %}
+:::info
+
+Choose this path if you want to issue or consume attestations on an existing Verax network without operating contracts,
+subgraph, or explorer infrastructure yourself.
+
+:::
 
 1. Pick a supported network from [Networks and Addresses](developer-guides/networks-and-addresses.md).
 2. Decide whether you only need to consume attestations, or whether you also need to issue them.
@@ -32,9 +36,12 @@ Use this path when:
 
 Use this path when you need a new chain deployment or want to operate the full stack yourself.
 
-{% hint style="warning" %} Running your own instance means owning more than contracts. You will usually need to operate
-or customize the subgraph, SDK config, explorer config, canonical schema bootstrapping, and deployment addresses too.
-{% endhint %}
+:::warning
+
+Running your own instance means owning more than contracts. You will usually need to operate or customize the subgraph,
+SDK config, explorer config, canonical schema bootstrapping, and deployment addresses too.
+
+:::
 
 1. Deploy the contracts and registries.
 2. Run post-deployment bootstrapping for canonical schemas.
@@ -53,8 +60,16 @@ The full workflow is documented in [Deploy a Verax Instance](developer-guides/de
 
 ## Operational Notes
 
-{% hint style="warning" %} Testnets are permissionless for schema and portal registration. Mainnets still require issuer
-allowlisting for schema and portal registration. {% endhint %}
+:::warning
 
-{% hint style="info" %} `subject` is stored as raw `bytes`, and attestation IDs are chain-prefixed. Both choices are
-important for cross-chain and non-address use cases. {% endhint %}
+Testnets are permissionless for schema and portal registration. Mainnets still require issuer allowlisting for schema
+and portal registration.
+
+:::
+
+:::info
+
+`subject` is stored as raw `bytes`, and attestation IDs are chain-prefixed. Both choices are important for cross-chain
+and non-address use cases.
+
+:::

@@ -13,9 +13,12 @@ The canonical bootstrap flow creates an `Offchain` schema with the following sha
 
 The SDK exposes this through `Constants.OFFCHAIN_DATA_SCHEMA_ID`.
 
-{% hint style="info" %} This is the preferred first-party offchain pattern for Verax documentation. Ceramic and other
-systems can still be used, but they should be presented as optional integrations rather than the default story.
-{% endhint %}
+:::info
+
+This is the preferred first-party offchain pattern for Verax documentation. Ceramic and other systems can still be used,
+but they should be presented as optional integrations rather than the default story.
+
+:::
 
 ## What happens onchain
 
@@ -85,8 +88,12 @@ When the SDK reads an attestation that uses the canonical offchain schema, it:
 If you rely on custom hex-encoded offchain payloads, validate the exact decode behavior against the SDK version you are
 shipping.
 
-{% hint style="warning" %} Offchain payloads add a new trust and availability boundary. The attestation stays onchain,
-but consumers now also depend on URI resolution and external content integrity. {% endhint %}
+:::warning
+
+Offchain payloads add a new trust and availability boundary. The attestation stays onchain, but consumers now also
+depend on URI resolution and external content integrity.
+
+:::
 
 ## When to use this pattern
 

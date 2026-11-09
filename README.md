@@ -44,15 +44,15 @@ interest on EVM chains, designed to improve discoverability and reuse across app
 
 ## Repository Organisation
 
-| Workspace    | Purpose                                                                       | Contributor guide                           |
-| ------------ | ----------------------------------------------------------------------------- | ------------------------------------------- |
-| `contracts/` | Core registries, deploy scripts, upgrade scripts, published contracts package | [contracts/README.md](contracts/README.md)  |
-| `examples/`  | Example portals/modules and example-contract CI workspace                     | [examples/README.md](examples/README.md)    |
-| `sdk/`       | TypeScript SDK, generated Graph client, examples and tests                    | [sdk/README.md](sdk/README.md)              |
-| `subgraph/`  | Graph manifests, mappings, tests and Studio deploy scripts                    | [subgraph/README.md](subgraph/README.md)    |
-| `explorer/`  | Public Verax explorer frontend                                                | [explorer/README.md](explorer/README.md)    |
-| `tutorial/`  | Demo/tutorial app built on top of the SDK                                     | [tutorial/README.md](tutorial/README.md)    |
-| `doc/`       | GitBook source for the published docs                                         | GitBook entrypoint lives in `doc/README.md` |
+| Workspace    | Purpose                                                                       | Contributor guide                          |
+| ------------ | ----------------------------------------------------------------------------- | ------------------------------------------ |
+| `contracts/` | Core registries, deploy scripts, upgrade scripts, published contracts package | [contracts/README.md](contracts/README.md) |
+| `examples/`  | Example portals/modules and example-contract CI workspace                     | [examples/README.md](examples/README.md)   |
+| `sdk/`       | TypeScript SDK, generated Graph client, examples and tests                    | [sdk/README.md](sdk/README.md)             |
+| `subgraph/`  | Graph manifests, mappings, tests and Studio deploy scripts                    | [subgraph/README.md](subgraph/README.md)   |
+| `explorer/`  | Public Verax explorer frontend                                                | [explorer/README.md](explorer/README.md)   |
+| `tutorial/`  | Demo/tutorial app built on top of the SDK                                     | [tutorial/README.md](tutorial/README.md)   |
+| `doc/`       | Docusaurus site for the published docs                                        | [doc/README.md](doc/README.md)             |
 
 ## Global Setup
 

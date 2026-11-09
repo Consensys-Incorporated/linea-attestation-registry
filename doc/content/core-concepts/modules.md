@@ -56,8 +56,12 @@ If more than one module tries to account for the same `msg.value`, your workflow
 
 That second point matters if you rely on payable logic for bulk attest or bulk replace.
 
-{% hint style="warning" %} If you use fee-like or payable validation logic, treat `msg.value` as a shared resource. More
-than one module trying to account for it can make the workflow inconsistent. {% endhint %}
+:::warning
+
+If you use fee-like or payable validation logic, treat `msg.value` as a shared resource. More than one module trying to
+account for it can make the workflow inconsistent.
+
+:::
 
 ## Standard-library modules
 

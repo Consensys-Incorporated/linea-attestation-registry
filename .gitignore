@@ -110,3 +110,6 @@ node_modules/
 
 # Playwright CLI local artifacts
 .playwright-cli/
+
+# Documentation
+.docusaurus

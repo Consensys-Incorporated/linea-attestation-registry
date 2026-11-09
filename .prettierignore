@@ -23,3 +23,4 @@ cache_forge
 lcov.info
 pnpm-lock.yaml
 .latest.json
+.docusaurus
