@@ -27,14 +27,24 @@ The tutorial app picks the frontend SDK config from the connected chain:
 ```ts
 import { VeraxSdk } from "@verax-attestation-registry/verax-sdk";
 
-const sdkConf =
-  chain.id === 84532
-    ? VeraxSdk.DEFAULT_BASE_SEPOLIA_FRONTEND
-    : chain.id === 59141
-      ? VeraxSdk.DEFAULT_LINEA_SEPOLIA_FRONTEND
-      : chain.id === 421614
-        ? VeraxSdk.DEFAULT_ARBITRUM_SEPOLIA_FRONTEND
-        : VeraxSdk.DEFAULT_BSC_TESTNET_FRONTEND;
+let sdkConf;
+switch (chain.id) {
+  case 84532:
+    sdkConf = VeraxSdk.DEFAULT_BASE_SEPOLIA_FRONTEND;
+    break;
+  case 59141:
+    sdkConf = VeraxSdk.DEFAULT_LINEA_SEPOLIA_FRONTEND;
+    break;
+  case 421614:
+    sdkConf = VeraxSdk.DEFAULT_ARBITRUM_SEPOLIA_FRONTEND;
+    break;
+  case 97:
+    sdkConf = VeraxSdk.DEFAULT_BSC_TESTNET_FRONTEND;
+    break;
+  default:
+    sdkConf = VeraxSdk.DEFAULT_LINEA_SEPOLIA_FRONTEND;
+    break;
+}
 
 const veraxSdk = new VeraxSdk(sdkConf, address);
 ```
@@ -54,8 +64,8 @@ If it does not exist:
 ```ts
 await veraxSdk.schema.create(
   "Tutorial Schema",
-  "This schema is used for the tutorial",
-  "https://schema.org/Thing",
+  "This Schema is used for the tutorial",
+  "https://ver.ax/#/tutorials",
   schemaString,
   { waitForConfirmation: true },
 );
@@ -67,7 +77,7 @@ await veraxSdk.schema.create(
 const receipt = await veraxSdk.portal.deployDefaultPortal(
   [],
   "Tutorial Portal",
-  "This portal is used for the tutorial",
+  "This Portal is used for the tutorial",
   true,
   "Verax Tutorial",
   { waitForConfirmation: true },
@@ -97,15 +107,16 @@ The emitted `AttestationRegistered` event gives you the new attestation ID.
 ## 6. Read it back
 
 ```ts
-const attestation = await veraxSdk.attestation.findOneById(attestationId);
+const attestation = await veraxSdk.attestation.getAttestation(attestationId);
 ```
 
-For richer explorer-like reads, you can also use `findBy(...)` or `findByMultiChain(...)`.
+The tutorial app reads the attestation onchain with `getAttestation`. For richer explorer-like reads from the subgraph,
+you can also use `findOneById(...)`, `findBy(...)`, or `findByMultiChain(...)`.
 
 ## Important correction
 
-If you build your own version of this tutorial, prefer `schema.isRegistered(schemaId)` to test existence. Calling
-`getSchema(schemaId)` on a missing schema reverts onchain.
+If you build your own version of this tutorial, prefer `schema.isRegistered(schemaId)` to test existence. The tutorial
+app calls `getSchema(schemaId)` instead, which reverts onchain with `SchemaNotRegistered` on a missing schema.
 
 ## Next steps
 

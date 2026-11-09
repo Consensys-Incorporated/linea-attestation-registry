@@ -18,5 +18,6 @@ These modules are good starting points when you do not want to write custom vali
 
 1. Deploy the module or reuse an existing deployment on your target chain.
 2. Configure it if the module exposes per-portal settings.
-3. Register it in `ModuleRegistry` if you want shared discoverability in that Verax deployment.
+3. Register it in `ModuleRegistry`, or reuse a registered deployment. Portals cannot run unregistered modules:
+   `ModuleRegistry.runModulesV2(...)` reverts with `ModuleNotRegistered`.
 4. Include its address in your portal's module list.

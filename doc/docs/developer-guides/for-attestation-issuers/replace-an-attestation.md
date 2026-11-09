@@ -15,7 +15,7 @@ function replace(
 
 function bulkReplace(
   bytes32[] memory attestationIds,
-  AttestationPayload[] memory attestationPayloads,
+  AttestationPayload[] memory attestationsPayloads,
   bytes[][] memory validationPayloads
 ) public onlyPortalOwner;
 ```

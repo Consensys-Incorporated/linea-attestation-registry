@@ -59,7 +59,7 @@ contract ExampleModule is AbstractModuleV2 {
 
 - Inheriting `AbstractModuleV2` already gives you ERC-165 support for registration checks.
 - `validationPayload` is where you pass signatures, proofs, or any module-specific data.
-- `operationType` lets you distinguish attest vs bulk attest vs replace.
+- `operationType` lets you distinguish attest vs bulk attest vs replace vs bulk replace.
 - If you rely on `msg.value`, remember that only one module in a chain should interpret it.
 - Bulk module execution currently passes `0` as value in `ModuleRegistry.bulkRunModulesV2(...)`.
 

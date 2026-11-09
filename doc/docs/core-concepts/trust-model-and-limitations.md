@@ -32,8 +32,7 @@ Verax does not automatically guarantee:
 - Multiple modules see the same `msg.value`; at most one module should account for it.
 - `IndexerModuleV2` has known caveats:
   - it does not un-index revoked attestations;
-  - it is not reliable for bulk attestation ID prediction;
-  - it does not include the chain prefix in its predicted ID logic.
+  - it is not reliable for bulk attestation ID prediction.
 
 ## Practical trust model
 

@@ -62,8 +62,8 @@ The full workflow is documented in [Deploy a Verax Instance](developer-guides/de
 
 :::warning
 
-Testnets are permissionless for schema and portal registration. Mainnets still require issuer allowlisting for schema
-and portal registration.
+Testnets are permissionless for schema, module, and portal registration. Mainnets still require issuer allowlisting for
+schema, module, and portal registration.
 
 :::
 

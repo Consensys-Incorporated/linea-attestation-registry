@@ -7,10 +7,11 @@ portals across supported networks.
 
 ## What the explorer currently exposes
 
-- an attestation list view;
+- a multichain attestation list view;
+- a "My attestations" view that lists the attestations received by the connected wallet;
 - a multichain schema catalog grouped by network type;
 - a multichain module catalog;
-- portal detail pages;
+- schema, module, and portal detail pages;
 - attestation detail pages;
 - subject pages that aggregate attestations by subject;
 - search across attestations, schemas, modules, and portals;
