@@ -17,8 +17,12 @@ Unlike `attest(...)`, this function is not payable in `AbstractPortalV2`.
 - one outer entry per attestation;
 - one inner entry per module used by the portal for that attestation.
 
-{% hint style="info" %} `bulkAttest(...)` is useful for gas savings, but it is not just "`attest(...)` repeated". The
-shape of `validationPayloads` and the lack of payable support matter for some integrations. {% endhint %}
+:::info
+
+`bulkAttest(...)` is useful for gas savings, but it is not just "`attest(...)` repeated". The shape of
+`validationPayloads` and the lack of payable support matter for some integrations.
+
+:::
 
 ## SDK
 
@@ -46,8 +50,11 @@ await veraxSdk.portal.bulkAttest(
 
 ## Important caveat
 
-{% hint style="warning" %} Bulk issuance can be a bad fit for modules that depend on predicting the next attestation ID.
-During bulk workflows, IDs are not incremented between module checks the same way a one-by-one flow might assume.
-{% endhint %}
+:::warning
+
+Bulk issuance can be a bad fit for modules that depend on predicting the next attestation ID. During bulk workflows, IDs
+are not incremented between module checks the same way a one-by-one flow might assume.
+
+:::
 
 If your logic depends on attestation IDs, prefer single `attest(...)`.

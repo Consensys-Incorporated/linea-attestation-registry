@@ -18,8 +18,11 @@ portals across supported networks.
 
 ## Important limitation
 
-{% hint style="warning" %} The issuer views in the explorer are currently curated UI data, not a complete onchain
-registry-backed issuer index. {% endhint %}
+:::warning
+
+The issuer views in the explorer are currently curated UI data, not a complete onchain registry-backed issuer index.
+
+:::
 
 In practice this means:
 

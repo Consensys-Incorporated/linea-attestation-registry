@@ -29,7 +29,7 @@ await veraxSdk.module.register("ExampleModule", "Example validation module", "0x
 
 ## Explorer or manual contract call
 
-<figure><img src="../../.gitbook/assets/register_module.png" alt="" width="217"><figcaption><p>Example explorer form for calling <code>register</code> on <code>ModuleRegistry</code>.</p></figcaption></figure>
+<figure><img src={require('@site/static/img/register_module.png').default} alt="" width="217" /><figcaption><p>Example explorer form for calling <code>register</code> on <code>ModuleRegistry</code>.</p></figcaption></figure>
 
 1. Find the `ModuleRegistry` address in [Networks and Addresses](../networks-and-addresses.md).
 2. Open the contract page in your network explorer.

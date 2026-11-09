@@ -163,8 +163,12 @@ const multiChainCount = await veraxSdk.attestation.getAttestationCountMultiChain
 If exact aggregated counts are critical to your application, validate them against the current SDK version and your
 deployment setup before depending on them operationally.
 
-{% hint style="warning" %} Treat helper counts as convenience APIs, not as unquestioned accounting truth, until you have
-validated them against the SDK version and deployment topology you are using. {% endhint %}
+:::warning
+
+Treat helper counts as convenience APIs, not as unquestioned accounting truth, until you have validated them against the
+SDK version and deployment topology you are using.
+
+:::
 
 ## Write operations
 
@@ -332,8 +336,12 @@ Write methods use the common transaction helper:
 - by default they return `{ transactionHash }`;
 - with `{ waitForConfirmation: true }` they return the full transaction receipt.
 
-{% hint style="info" %} For frontend flows and tutorials, `{ waitForConfirmation: true }` usually makes the rest of your
-code simpler because you can read logs and derived IDs immediately from the receipt. {% endhint %}
+:::info
+
+For frontend flows and tutorials, `{ waitForConfirmation: true }` usually makes the rest of your code simpler because
+you can read logs and derived IDs immediately from the receipt.
+
+:::
 
 ## Practical advice
 

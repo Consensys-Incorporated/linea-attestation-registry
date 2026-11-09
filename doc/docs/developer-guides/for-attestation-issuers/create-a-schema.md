@@ -29,8 +29,11 @@ Protocol checks:
 | `context`      | `string` | Semantic context hint or vocabulary pointer |
 | `schemaString` | `string` | ABI-like schema definition                  |
 
-{% hint style="warning" %} On mainnets, schema creation is gated by issuer allowlisting. On testnets, the deployment is
-permissionless. {% endhint %}
+:::warning
+
+On mainnets, schema creation is gated by issuer allowlisting. On testnets, the deployment is permissionless.
+
+:::
 
 ## Recommended flow
 
@@ -38,8 +41,12 @@ permissionless. {% endhint %}
 2. Check whether it is already registered.
 3. Create it only if needed.
 
-{% hint style="info" %} Because schema IDs are deterministic, recomputing the ID locally is usually easier and more
-reliable than scraping it from explorer logs. {% endhint %}
+:::info
+
+Because schema IDs are deterministic, recomputing the ID locally is usually easier and more reliable than scraping it
+from explorer logs.
+
+:::
 
 ## SDK
 
@@ -61,7 +68,7 @@ if (!exists) {
 
 ## Explorer or manual contract call
 
-<figure><img src="../../.gitbook/assets/create_schema.png" alt="" width="283"><figcaption><p>Example explorer form for calling <code>createSchema</code> on <code>SchemaRegistry</code>.</p></figcaption></figure>
+<figure><img src={require('@site/static/img/create_schema.png').default} alt="" width="283" /><figcaption><p>Example explorer form for calling <code>createSchema</code> on <code>SchemaRegistry</code>.</p></figcaption></figure>
 
 1. Find the `SchemaRegistry` address for your network in [Networks and Addresses](../networks-and-addresses.md).
 2. Open the contract page in your network explorer.

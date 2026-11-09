@@ -41,8 +41,12 @@ Important modeling details:
 - there is no `schemaString` field on `Attestation`;
 - if you want the schema definition, query `schema { schema }`.
 
-{% hint style="warning" %} Several older query examples found in historical Verax docs are invalid against the current
-subgraph schema. In particular, `schemaId` and `schemaString` are not flat fields on `Attestation`. {% endhint %}
+:::warning
+
+Several older query examples found in historical Verax docs are invalid against the current subgraph schema. In
+particular, `schemaId` and `schemaString` are not flat fields on `Attestation`.
+
+:::
 
 ## Example queries
 

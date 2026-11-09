@@ -25,8 +25,12 @@ In practice, the safest rule is:
 - keep the outer parentheses;
 - prefer types supported by standard Solidity ABI encoders.
 
-{% hint style="info" %} If a schema string can be parsed and encoded like normal ABI parameters, it is much more likely
-to work cleanly across the SDK, explorers, and external tooling. {% endhint %}
+:::info
+
+If a schema string can be parsed and encoded like normal ABI parameters, it is much more likely to work cleanly across
+the SDK, explorers, and external tooling.
+
+:::
 
 ## Metadata stored onchain
 
@@ -89,8 +93,12 @@ If you need inheritance or richer semantic modeling now, model it explicitly wit
 - relationship attestations;
 - offchain documentation and context URLs.
 
-{% hint style="warning" %} Do not document `@extends` or `{ ... }` relationship notation as production-ready schema
-syntax today. Those ideas are useful for research, but the current SDK path is ABI-oriented. {% endhint %}
+:::warning
+
+Do not document `@extends` or `{ ... }` relationship notation as production-ready schema syntax today. Those ideas are
+useful for research, but the current SDK path is ABI-oriented.
+
+:::
 
 ## Recommended authoring rules
 

@@ -1,0 +1,59 @@
+name: Documentation
+
+on:
+  pull_request:
+    branches:
+      - main
+      - dev
+      - release/*
+    paths:
+      - "doc/**"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
+      - ".github/workflows/doc-build.yml"
+  push:
+    branches:
+      - main
+      - dev
+      - release/*
+    paths:
+      - "doc/**"
+      - "pnpm-lock.yaml"
+      - "pnpm-workspace.yaml"
+      - ".github/workflows/doc-build.yml"
+
+permissions: {} # lock everything by default (least-privilege)
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-doc:
+    runs-on:
+      ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository &&
+      'ubuntu-latest' || 'gha-runner-scale-set-ubuntu-24-amd64-med' }}
+    permissions:
+      contents: read
+
+    defaults:
+      run:
+        working-directory: doc
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Setup environment
+        uses: ./.github/actions/setup-env
+
+      - name: Typecheck
+        run: pnpm run typecheck
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Add build summary
+        run: |
+          echo "## Documentation build result" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Passed" >> $GITHUB_STEP_SUMMARY
