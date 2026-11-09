@@ -68,7 +68,7 @@ Run the relevant commands for the areas you changed.
 | `doc/`       | `pnpm --filter @verax-attestation-registry/verax-doc dev`, `build`                                 |
 
 If a change affects public behavior, deployment instructions, or contributor workflow, update the relevant README and
-the documentation pages under `doc/docs/` when needed.
+the documentation pages under `doc/content/` when needed.
 
 ## Documentation Changes
 
