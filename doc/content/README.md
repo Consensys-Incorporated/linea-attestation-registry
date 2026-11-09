@@ -43,7 +43,8 @@ An attestation in Verax is usually an issuer making a statement about a subject:
 ## Notes
 
 - On testnets, Verax instances are configured as permissionless through `PortalRegistry.getIsTestnet()`.
-- On mainnets, schema and portal registration is still gated by the issuer allowlist managed in `PortalRegistry`.
+- On mainnets, schema, module, and portal registration is still gated by the issuer allowlist managed in
+  `PortalRegistry`.
 - The monorepo is the source of truth for contracts, SDK, explorer, tutorial app, and subgraph.
 
 ## Contact

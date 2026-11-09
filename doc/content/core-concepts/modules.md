@@ -34,7 +34,8 @@ The module should revert when validation fails.
 
 ## Registration model
 
-Modules must be registered in `ModuleRegistry` before portals can rely on them as part of the shared Verax deployment.
+Modules must be registered in `ModuleRegistry` before portals can run them. `ModuleRegistry.runModulesV2(...)` reverts
+with `ModuleNotRegistered` for an unregistered module.
 
 Registration stores:
 

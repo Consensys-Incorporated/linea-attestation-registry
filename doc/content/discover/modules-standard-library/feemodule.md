@@ -23,8 +23,8 @@ Only the portal owner can configure fees for that portal.
 
 ## Important limitation
 
-This module validates the fee but does not route funds anywhere. The value remains in the portal contract, so your
-portal needs a withdrawal path.
+This module validates the fee but does not route funds anywhere. The value remains in the portal contract. The portal
+owner can withdraw it with `AbstractPortalV2.withdraw(...)`.
 
 Also remember:
 

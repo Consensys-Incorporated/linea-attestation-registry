@@ -1,6 +1,6 @@
 # Proposal Templates
 
-Use the forum's live templates when possible. This page keeps the expected structure in GitBook for reference.
+Use the forum's live templates when possible. This page keeps the expected structure in these docs for reference.
 
 ## New chain deployment
 

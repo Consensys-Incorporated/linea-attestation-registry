@@ -21,7 +21,7 @@ A portal can:
 
 If you only need a standard entrypoint with a list of modules, use `PortalRegistry.deployDefaultPortal(...)`.
 
-This deploys a `DefaultPortalV2` clone-like instance and registers it in one step.
+This deploys a new `DefaultPortalV2` instance and registers it in one step, with the caller as portal owner.
 
 ### Custom portal
 

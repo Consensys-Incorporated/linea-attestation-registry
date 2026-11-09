@@ -28,5 +28,5 @@ Treat Ceramic as an application-specific storage layer:
 
 ## Documentation boundary
 
-Because Ceramic is not part of the core Verax repository or protocol deployment model, this GitBook does not treat it as
-source-of-truth infrastructure. It is one optional integration pattern among others.
+Because Ceramic is not part of the core Verax repository or protocol deployment model, this documentation does not treat
+it as source-of-truth infrastructure. It is one optional integration pattern among others.

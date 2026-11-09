@@ -34,7 +34,6 @@ This module has significant limitations in its current form:
 
 - it does not un-index revoked attestations;
 - it is not reliable for bulk issuance scenarios that depend on predicted IDs;
-- it predicts IDs without incorporating the chain prefix into its local construction logic;
 - it should be treated as advanced or experimental tooling rather than the default discovery path.
 
 :::

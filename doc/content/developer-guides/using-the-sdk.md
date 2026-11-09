@@ -319,7 +319,7 @@ See [Offchain Payloads](offchain-payloads.md).
 Use `veraxSdk.utils` when you want direct ABI encoding and decoding helpers:
 
 ```ts
-const encoded = veraxSdk.utils.encode("(string handle, uint16 score)", ["alice", 42]);
+const encoded = veraxSdk.utils.encode("(string handle, uint16 score)", [{ handle: "alice", score: 42 }]);
 const decoded = veraxSdk.utils.decode("(string handle, uint16 score)", encoded);
 ```
 

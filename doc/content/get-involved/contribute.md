@@ -6,7 +6,7 @@ truth.
 ## Where to contribute
 
 - product, contracts, SDK, explorer, tutorial, subgraph: this repository;
-- documentation published through GitBook: the `doc/` folder in this repository;
+- documentation published through Docusaurus: the `doc/` folder in this repository;
 - governance discussion: the community forum.
 
 ## Typical contribution paths
@@ -20,7 +20,7 @@ truth.
 
 For documentation work:
 
-1. edit files under `doc/`;
+1. edit files under `doc/content/`;
 2. keep examples aligned with contracts, SDK exports, explorer behavior, and subgraph schema;
 3. prefer the monorepo over older parallel documentation repos or stale external tutorials.
 
