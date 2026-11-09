@@ -21,11 +21,9 @@
   },
   "scripts": {
     "build": "tsc && vite build",
-    "build:netlify": "pnpm run build && pnpm run redirect",
     "dev": "vite",
     "lint": "eslint . --max-warnings 0",
-    "preview": "vite preview",
-    "redirect": "touch dist/_redirects && echo '/*  /index.html  200' >> dist/_redirects"
+    "preview": "vite preview"
   },
   "dependencies": {
     "@floating-ui/react": "0.27.20",
@@ -69,7 +67,6 @@
     "eslint-plugin-react-hooks": "catalog:react",
     "eslint-plugin-react-refresh": "catalog:react",
     "globals": "catalog:eslint",
-    "netlify-cli": "26.2.0",
     "postcss": "8.5.31",
     "prettier": "catalog:core",
     "tailwindcss": "4.3.3",

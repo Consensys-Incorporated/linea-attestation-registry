@@ -9,7 +9,7 @@ export const infoData = [
     title: t("home.info.issueYourAttestation"),
     button: {
       name: t("common.actions.getStarted"),
-      url: "https://docs.ver.ax/verax-documentation/developer-guides/for-attestation-issuers",
+      url: "https://docs.ver.ax/developer-guides/for-attestation-issuers",
     },
     additionalClass: "bg-surface-secondary dark:bg-surface-secondaryDark",
   },

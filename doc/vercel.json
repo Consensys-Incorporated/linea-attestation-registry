@@ -1,0 +1,10 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/verax-documentation", "destination": "/", "permanent": true },
+    { "source": "/verax-documentation/readme", "destination": "/", "permanent": true },
+    { "source": "/verax-documentation/:path*", "destination": "/:path*", "permanent": true }
+  ]
+}

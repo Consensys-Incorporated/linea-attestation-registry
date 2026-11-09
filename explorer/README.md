@@ -29,13 +29,12 @@ overrides defined in `src/config/subgraphUrls.ts`.
 
 Run these commands from `explorer/`.
 
-| Command                  | Purpose                                   |
-| ------------------------ | ----------------------------------------- |
-| `pnpm run dev`           | Start the local development server        |
-| `pnpm run build`         | Type-check and build the app              |
-| `pnpm run build:netlify` | Build the Netlify-ready production bundle |
-| `pnpm run preview`       | Preview the production build locally      |
-| `pnpm run lint`          | Run ESLint                                |
+| Command            | Purpose                              |
+| ------------------ | ------------------------------------ |
+| `pnpm run dev`     | Start the local development server   |
+| `pnpm run build`   | Type-check and build the app         |
+| `pnpm run preview` | Preview the production build locally |
+| `pnpm run lint`    | Run ESLint                           |
 
 ## Adding or Updating a Network
 
@@ -58,9 +57,11 @@ Follow the existing patterns for mainnet/testnet naming so the explorer stays al
 
 ## CI and Deployments
 
-The repo currently exposes two explorer deployment workflows:
+`explorer-build.yml` builds the explorer on each pull request.
 
-- pull requests touching `explorer/` get a preview deploy through `explorer-deploy-preview.yml`
-- maintainers can trigger production deployment through `explorer-deploy-prod.yml`
+The explorer is deployed by the Vercel Git integration:
 
-Both workflows build the explorer with the same `VITE_*` secrets used in production.
+- each pull request that touches `explorer/` gets a preview deployment;
+- each merge to `dev` deploys production.
+
+The `VITE_*` variables are set in the Vercel project. `vercel.json` rewrites all routes to `index.html`.
