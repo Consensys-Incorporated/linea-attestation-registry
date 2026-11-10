@@ -7,6 +7,29 @@ packages:
   - subgraph
   - tutorial
 
+# pnpm 12 records the pinned pnpm in a first lockfile document, which hides all dependencies
+# from GitHub's dependency graph and Dependabot. `ignore` keeps a single-document lockfile,
+# but pnpm no longer switches to the pinned version locally (CI, Docker and Vercel still pin it).
+pmOnFail: ignore
+
+minimumReleaseAge: 10080
+# Locked before the policy; all are older than 7 days after 2026-11-15, then remove.
+minimumReleaseAgeExclude:
+  - enhanced-resolve@5.26.1
+  - hast-util-raw@9.2.0
+  - markdown-table@3.1.0
+  - mdast-util-gfm-autolink-literal@2.1.0
+  - mdast-util-gfm-table@2.0.1
+  - mdast-util-gfm-task-list-item@2.0.1
+  - mdast-util-mdx-jsx@3.2.1
+  - mdast-util-to-markdown@2.2.3
+  - parse5@8.1.1
+  - schema-utils@4.8.3
+  - serve-handler@6.1.8
+  - vfile-location@5.0.4
+  - vfile-message@4.0.4
+  - watchpack@2.6.4
+
 allowBuilds:
   "@parcel/watcher": true
   "@reown/appkit": false
