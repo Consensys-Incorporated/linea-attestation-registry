@@ -58,7 +58,7 @@ interest on EVM chains, designed to improve discoverability and reuse across app
 
 CI reads Node.js and pnpm directly from the root `package.json`. On this branch, that means:
 
-- Node.js `24.22.1`
+- Node.js `24.22.3`
 - pnpm `12.17.0`
 
 pnpm does not switch to the pinned version by itself (`pmOnFail: ignore` in `pnpm-workspace.yaml` keeps the lockfile
