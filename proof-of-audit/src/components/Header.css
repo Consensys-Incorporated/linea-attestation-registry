@@ -1,0 +1,25 @@
+.header {
+  width: 100%;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.header-content {
+  max-width: calc(var(--column) + 2 * var(--space-lg));
+  margin: 0 auto;
+  padding: var(--space-md) var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.header-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .header-content {
+    padding-inline: var(--space-md);
+  }
+}
