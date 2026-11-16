@@ -24,6 +24,7 @@ The repository currently exposes the following contributor-facing checks and aut
 - `subgraph.yml` builds and tests `subgraph/`.
 - `explorer-build.yml` builds `explorer/`.
 - `doc-build.yml` type-checks and builds `doc/`.
+- `proof-of-audit.yml` type-checks, tests, and builds `proof-of-audit/`.
 - Vercel publishes preview deployments of `website/`, `explorer/`, `doc/`, `tutorial/`, and `proof-of-audit/` for pull
   requests that touch them, and deploys production on each merge to `dev`.
 - `releaser.yml` is a maintainer-only manual release flow.
