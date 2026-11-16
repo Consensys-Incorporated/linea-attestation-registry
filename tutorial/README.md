@@ -42,6 +42,15 @@ pnpm --filter @verax-attestation-registry/verax-tutorial dev
 pnpm --filter @verax-attestation-registry/verax-tutorial build
 ```
 
+## Deployment (Vercel)
+
+The tutorial is deployed by the Vercel Git integration:
+
+- each pull request that touches `tutorial/` gets a preview deployment;
+- each merge to `dev` deploys production.
+
+The `VITE_*` variables are set in the Vercel project.
+
 ## Notes for Contributors
 
 - This workspace is a demo application, not the source of truth for protocol or SDK behavior.
