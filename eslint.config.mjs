@@ -37,7 +37,7 @@ export default tseslint.config(
   // Global settings for all non-React files
   {
     files: ["**/*.{ts,tsx,js,mjs,cjs}"],
-    ignores: ["explorer/**", "tutorial/**"],
+    ignores: ["explorer/**", "tutorial/**", "proof-of-audit/src/**"],
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
@@ -78,10 +78,10 @@ export default tseslint.config(
   },
 
   // ============================================
-  // React apps (Explorer, Tutorial) shared configuration
+  // React apps (Explorer, Tutorial, Proof of Audit) shared configuration
   // ============================================
   {
-    files: ["{explorer,tutorial}/src/**/*.{ts,tsx}"],
+    files: ["{explorer,tutorial,proof-of-audit}/src/**/*.{ts,tsx}"],
     plugins: {
       react,
       "react-hooks": reactHooks,
@@ -160,7 +160,7 @@ export default tseslint.config(
   // React apps config files (CJS/ESM)
   {
     files: [
-      "{explorer,tutorial}/*.config.{js,ts,mjs}",
+      "{explorer,tutorial,proof-of-audit}/*.config.{js,ts,mjs}",
       "explorer/*.cjs",
       "explorer/postcss.config.js",
       "explorer/tailwind.config.js",

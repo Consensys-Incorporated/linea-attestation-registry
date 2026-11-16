@@ -3,6 +3,7 @@ packages:
   - doc
   - examples
   - explorer
+  - proof-of-audit
   - sdk
   - subgraph
   - tutorial

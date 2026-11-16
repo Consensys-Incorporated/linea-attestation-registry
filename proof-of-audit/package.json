@@ -1,0 +1,53 @@
+{
+  "name": "@verax-attestation-registry/proof-of-audit",
+  "version": "0.0.1",
+  "description": "Demo app that issues attestations of smart contract audits with the Verax SDK",
+  "private": true,
+  "keywords": [
+    "linea-attestation-registry",
+    "blockchain",
+    "attestation",
+    "ethereum",
+    "verax",
+    "audit"
+  ],
+  "repository": "github.com/Consensys/linea-attestation-registry",
+  "license": "MIT",
+  "author": "Consensys",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && vite build",
+    "dev": "vite",
+    "lint": "eslint . --max-warnings 0",
+    "preview": "vite preview",
+    "security:verify": "node --experimental-strip-types scripts/verify-security-fixes.mjs",
+    "test": "vitest run",
+    "test:browser:wallet": "node scripts/wallet-chunk-retry-smoke.mjs",
+    "test:browser:wallet:missing-config": "node scripts/wallet-chunk-retry-smoke.mjs --expect-missing-config",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@reown/appkit": "1.8.24",
+    "@reown/appkit-adapter-wagmi": "1.8.24",
+    "@tanstack/react-query": "catalog:react",
+    "@verax-attestation-registry/verax-sdk": "5.4.0",
+    "react": "catalog:react",
+    "react-dom": "catalog:react",
+    "viem": "catalog:web3",
+    "wagmi": "3.7.7"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "10.4.2",
+    "@testing-library/jest-dom": "7.0.1",
+    "@testing-library/react": "16.3.3",
+    "@types/node": "catalog:types",
+    "@types/react": "catalog:react",
+    "@types/react-dom": "catalog:react",
+    "@vitejs/plugin-react": "6.1.2",
+    "jsdom": "30.1.3",
+    "prettier": "catalog:core",
+    "typescript": "catalog:core",
+    "vite": "8.3.5",
+    "vitest": "5.1.0"
+  }
+}

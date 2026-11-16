@@ -1,0 +1,17 @@
+# Proof of Audit
+
+Proof of Audit is a public Verax demo application for creating on-chain attestations of smart contract audits on Linea.
+
+## Primary URL
+
+- [Proof of Audit](https://audit.examples.ver.ax/)
+
+## Purpose
+
+Use the site to connect a wallet and link a GitHub repository URL, audited commit hash, and smart contract address to a Verax attestation.
+
+## Important Resources
+
+- [Verax website](https://www.ver.ax/)
+- [Verax documentation](https://docs.ver.ax/)
+- [GitHub repository](https://github.com/Consensys/linea-attestation-registry/tree/dev/proof-of-audit)

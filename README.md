@@ -44,15 +44,16 @@ interest on EVM chains, designed to improve discoverability and reuse across app
 
 ## Repository Organisation
 
-| Workspace    | Purpose                                                                       | Contributor guide                          |
-| ------------ | ----------------------------------------------------------------------------- | ------------------------------------------ |
-| `contracts/` | Core registries, deploy scripts, upgrade scripts, published contracts package | [contracts/README.md](contracts/README.md) |
-| `examples/`  | Example portals/modules and example-contract CI workspace                     | [examples/README.md](examples/README.md)   |
-| `sdk/`       | TypeScript SDK, generated Graph client, examples and tests                    | [sdk/README.md](sdk/README.md)             |
-| `subgraph/`  | Graph manifests, mappings, tests and Studio deploy scripts                    | [subgraph/README.md](subgraph/README.md)   |
-| `explorer/`  | Public Verax explorer frontend                                                | [explorer/README.md](explorer/README.md)   |
-| `tutorial/`  | Demo/tutorial app built on top of the SDK                                     | [tutorial/README.md](tutorial/README.md)   |
-| `doc/`       | Docusaurus site for the published docs                                        | [doc/README.md](doc/README.md)             |
+| Workspace         | Purpose                                                                       | Contributor guide                                    |
+| ----------------- | ----------------------------------------------------------------------------- | ---------------------------------------------------- |
+| `contracts/`      | Core registries, deploy scripts, upgrade scripts, published contracts package | [contracts/README.md](contracts/README.md)           |
+| `examples/`       | Example portals/modules and example-contract CI workspace                     | [examples/README.md](examples/README.md)             |
+| `sdk/`            | TypeScript SDK, generated Graph client, examples and tests                    | [sdk/README.md](sdk/README.md)                       |
+| `subgraph/`       | Graph manifests, mappings, tests and Studio deploy scripts                    | [subgraph/README.md](subgraph/README.md)             |
+| `explorer/`       | Public Verax explorer frontend                                                | [explorer/README.md](explorer/README.md)             |
+| `tutorial/`       | Demo/tutorial app built on top of the SDK                                     | [tutorial/README.md](tutorial/README.md)             |
+| `proof-of-audit/` | Demo app that issues attestations of smart contract audits                    | [proof-of-audit/README.md](proof-of-audit/README.md) |
+| `doc/`            | Docusaurus site for the published docs                                        | [doc/README.md](doc/README.md)                       |
 
 ## Global Setup
 
@@ -77,26 +78,28 @@ plus package-local scripts.
 
 Run the commands below from the monorepo root.
 
-| Area      | Common commands                                                                      | Notes                                    |
-| --------- | ------------------------------------------------------------------------------------ | ---------------------------------------- |
-| Contracts | `pnpm --filter @verax-attestation-registry/verax-contracts build` / `test`           | Requires Foundry                         |
-| Examples  | `pnpm --filter @verax-attestation-registry/verax-examples build` / `test`            | Requires Foundry                         |
-| SDK       | `pnpm --filter @verax-attestation-registry/verax-sdk test:unit` / `test:integration` | Uses `.env.example`                      |
-| Subgraph  | `pnpm --filter linea-attestation-registry-subgraph build:linea-sepolia` / `test`     | Deploys to The Graph Studio              |
-| Explorer  | `pnpm --filter verax-explorer dev` / `build`                                         | Uses `VITE_*` env vars                   |
-| Tutorial  | `pnpm --filter @verax-attestation-registry/verax-tutorial dev` / `build`             | Demo app, no dedicated CI workflow today |
+| Area           | Common commands                                                                      | Notes                                    |
+| -------------- | ------------------------------------------------------------------------------------ | ---------------------------------------- |
+| Contracts      | `pnpm --filter @verax-attestation-registry/verax-contracts build` / `test`           | Requires Foundry                         |
+| Examples       | `pnpm --filter @verax-attestation-registry/verax-examples build` / `test`            | Requires Foundry                         |
+| SDK            | `pnpm --filter @verax-attestation-registry/verax-sdk test:unit` / `test:integration` | Uses `.env.example`                      |
+| Subgraph       | `pnpm --filter linea-attestation-registry-subgraph build:linea-sepolia` / `test`     | Deploys to The Graph Studio              |
+| Explorer       | `pnpm --filter verax-explorer dev` / `build`                                         | Uses `VITE_*` env vars                   |
+| Tutorial       | `pnpm --filter @verax-attestation-registry/verax-tutorial dev` / `build`             | Demo app, no dedicated CI workflow today |
+| Proof of Audit | `pnpm --filter @verax-attestation-registry/proof-of-audit dev` / `build` / `test`    | Demo app, uses `VITE_*` env vars         |
 
 Each workspace README describes the maintainer workflow for that package in more detail.
 
 ## Environment Files
 
-| Workspace    | Expected file                                               | Purpose                                                |
-| ------------ | ----------------------------------------------------------- | ------------------------------------------------------ |
-| `contracts/` | `contracts/.env` copied from `contracts/env/.env.<network>` | Deployments, upgrades, explorer verification, reimport |
-| `sdk/`       | `sdk/.env` copied from `sdk/.env.example`                   | Examples and integration tests                         |
-| `explorer/`  | `explorer/.env` copied from `explorer/.env.example`         | WalletConnect, Infura, The Graph gateway               |
-| `tutorial/`  | `tutorial/.env` copied from `tutorial/.env.example`         | WalletConnect and Infura for the demo app              |
-| `subgraph/`  | No repo-local `.env.example`                                | Use `graph auth <ACCESS_TOKEN>` when deploying         |
+| Workspace         | Expected file                                                   | Purpose                                                |
+| ----------------- | --------------------------------------------------------------- | ------------------------------------------------------ |
+| `contracts/`      | `contracts/.env` copied from `contracts/env/.env.<network>`     | Deployments, upgrades, explorer verification, reimport |
+| `sdk/`            | `sdk/.env` copied from `sdk/.env.example`                       | Examples and integration tests                         |
+| `explorer/`       | `explorer/.env` copied from `explorer/.env.example`             | WalletConnect, Infura, The Graph gateway               |
+| `tutorial/`       | `tutorial/.env` copied from `tutorial/.env.example`             | WalletConnect and Infura for the demo app              |
+| `proof-of-audit/` | `proof-of-audit/.env` copied from `proof-of-audit/.env.example` | WalletConnect and optional analytics                   |
+| `subgraph/`       | No repo-local `.env.example`                                    | Use `graph auth <ACCESS_TOKEN>` when deploying         |
 
 ## Contributing
 
