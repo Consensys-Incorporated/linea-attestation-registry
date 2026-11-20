@@ -11,6 +11,7 @@ import { PortalRegistry } from "../PortalRegistry.sol";
  * @author Consensys
  * @notice This module can be used by portal creators to enforce a fee on attestations.
  * @dev This Module checks the fee is sent, but doesn't collect the fee
+ *      DISCLAIMER: Bulk operations forward a value of 0, so they revert for a Schema with a non-zero fee.
  */
 contract FeeModuleV2 is AbstractModuleV2 {
   PortalRegistry public portalRegistry;

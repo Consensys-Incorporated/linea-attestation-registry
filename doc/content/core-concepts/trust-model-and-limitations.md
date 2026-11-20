@@ -26,7 +26,7 @@ Verax does not automatically guarantee:
 
 ## Current protocol constraints
 
-- Mainnet schema and portal registration is still allowlist-gated through `PortalRegistry`.
+- Mainnet schema, module, and portal registration is still allowlist-gated through `PortalRegistry`.
 - `subject` is raw `bytes`, which is flexible but pushes normalization responsibility to consumers.
 - `replace` is implemented as revoke-then-attest, so downstream consumers should interpret replacement explicitly.
 - Multiple modules see the same `msg.value`; at most one module should account for it.
