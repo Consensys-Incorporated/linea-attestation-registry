@@ -35,9 +35,19 @@ This deploys:
 
 `AttestationRegistry` receives its chain prefix from `contracts/script/utils.ts`.
 
+The script prints the proxy addresses in its summary. Copy them into `contracts/.env` before you run the next steps:
+
+- `ROUTER_ADDRESS`
+- `ATTESTATION_REGISTRY_ADDRESS`
+- `MODULE_REGISTRY_ADDRESS`
+- `PORTAL_REGISTRY_ADDRESS`
+- `SCHEMA_REGISTRY_ADDRESS`
+
+The next scripts read these variables and fail if they are empty.
+
 ## 2. Bootstrap canonical schemas
 
-After the registries are deployed, run the post-deployment bootstrap:
+After the registries are deployed, run the post-deployment bootstrap. It reads `SCHEMA_REGISTRY_ADDRESS`:
 
 ```bash
 pnpm run deploy:post <network>
@@ -53,7 +63,8 @@ These schema IDs are later reused by the SDK and explorer.
 
 ## 3. Optionally deploy the standard library
 
-If you want the Verax-maintained modules available on the new chain, run:
+If you want the Verax-maintained modules available on the new chain, run the command below. It reads
+`PORTAL_REGISTRY_ADDRESS`, `ATTESTATION_REGISTRY_ADDRESS`, and `MODULE_REGISTRY_ADDRESS`:
 
 ```bash
 pnpm run deploy:stdlib <network>
@@ -71,8 +82,8 @@ This deploys and registers:
 
 ## 4. Optionally deploy EAS compatibility helpers
 
-If the target chain has an EAS deployment and you want a unified Verax/EAS read path, set `EAS_REGISTRY_ADDRESS` and
-run:
+If the target chain has an EAS deployment and you want a unified Verax/EAS read path, set `EAS_REGISTRY_ADDRESS` in
+`contracts/.env` (`ROUTER_ADDRESS` must also be set) and run:
 
 ```bash
 pnpm run deploy:eas <network>
@@ -118,7 +129,8 @@ The explorer must also be updated.
 
 ## 8. Operational notes
 
-- On mainnet deployments, issuer allowlisting remains active through `PortalRegistry`.
+- On mainnet deployments, issuer allowlisting remains active through `PortalRegistry`. It gates schema creation, module
+  registration, and portal registration. The deployer must be an issuer before `deploy:post` and `deploy:stdlib`.
 - On testnet deployments, `PortalRegistry` is initialized as permissionless.
 - If you upgrade contracts, re-run the network reimport flow in `contracts/` before publishing new addresses.
 - Keep the contracts, subgraph, SDK, and explorer in sync; the documentation should only reference addresses and
