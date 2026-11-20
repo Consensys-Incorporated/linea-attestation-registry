@@ -49,7 +49,6 @@ Used when verifying contracts through Hardhat.
 | `BASESCAN_API_KEY`  | `base`, `base-sepolia`         |
 | `BSCSCAN_API_KEY`   | `bsc`, `bsc-testnet`           |
 | `LINEASCAN_API_KEY` | `linea`, `linea-sepolia`       |
-| `ETHERSCAN_API_KEY` | `sepolia`                      |
 
 ### Deployed proxy addresses and EAS
 
