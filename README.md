@@ -374,7 +374,6 @@ Attestation IDs embed a 32-byte chain prefix. The short forms below correspond t
 - Base Mainnet - `0x0005`
 - BSC Testnet - `0x0006`
 - BSC Mainnet - `0x0006`
-- Ethereum Sepolia - `0x0008`
 
 ## Deployment and Release Notes
 
