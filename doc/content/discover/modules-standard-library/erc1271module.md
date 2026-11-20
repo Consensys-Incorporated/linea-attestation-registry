@@ -9,9 +9,23 @@ ERC-1271.
 
 The module:
 
-1. recovers the signer from the signed attestation payload;
-2. checks that signer against the portal's authorized signer list;
-3. if the signer is a contract, calls `isValidSignature(...)`.
+1. decodes `validationPayload` as `abi.encode(address signer, bytes signature)`;
+2. checks that `signer` against the portal's authorized signer list;
+3. computes `keccak256(abi.encode(attestationPayload))` and applies the Ethereum signed message prefix;
+4. validates the signature with OpenZeppelin `SignatureChecker`:
+   - an EOA signer must be the address recovered from the ECDSA signature;
+   - a contract signer must return the ERC-1271 magic value from `isValidSignature(...)`.
+
+A contract wallet cannot be recovered from its signature. This is why the payload must name the signer.
+
+## Validation payload
+
+```solidity
+bytes memory validationPayload = abi.encode(signer, signature);
+```
+
+For a contract wallet, `signer` is the wallet address and `signature` is the value that the wallet expects in
+`isValidSignature(...)`. A raw signature without the signer is not a valid payload.
 
 ## Portal-owner configuration
 

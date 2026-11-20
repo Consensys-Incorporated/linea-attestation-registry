@@ -6,20 +6,19 @@ import { PortalRegistry } from "../PortalRegistry.sol";
 import { OperationType } from "../types/Enums.sol";
 import { AttestationPayload } from "../types/Structs.sol";
 import { ECDSA } from "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
-import { IERC1271 } from "@openzeppelin/contracts/interfaces/IERC1271.sol";
-import { Address } from "@openzeppelin/contracts/utils/Address.sol";
+import { SignatureChecker } from "@openzeppelin/contracts/utils/cryptography/SignatureChecker.sol";
 
 /**
  * @title ERC-1271 Module V2
  * @author Consensys
  * @notice This Module can be used by Portal creators to
- *         require an ERC_1271 signature of the attestation payload
+ *         require a signature of the attestation payload
  *         from an authorized signer before issuing the attestation.
+ *         The signer can be an EOA (ECDSA) or a smart contract wallet (ERC-1271).
  * @dev DISCLAIMER: This module doesn't check that a signature can be used only once!
  */
 contract ERC1271ModuleV2 is AbstractModuleV2 {
   using ECDSA for bytes32;
-  using Address for address;
 
   PortalRegistry public portalRegistry;
 
@@ -31,8 +30,6 @@ contract ERC1271ModuleV2 is AbstractModuleV2 {
   error SignerNotAuthorized();
   /// @notice Error thrown when a signature is invalid
   error InvalidSignature();
-  /// @notice Error thrown when a signature validation fails
-  error FailedValidation();
 
   /// @notice Event emitted when the authorized signers are set
   event SignersAuthorized(address indexed portal, address[] signers, bool[] authorizationStatus);
@@ -72,9 +69,10 @@ contract ERC1271ModuleV2 is AbstractModuleV2 {
   /**
    * @inheritdoc AbstractModuleV2
    * @param attestationPayload The Payload of the attestation
-   * @param validationPayload The validation payload required for the module, in this case the signature of the payload
+   * @param validationPayload The validation payload required for the module: `abi.encode(address signer, bytes signature)`
    * @param portal The Portal issuing the attestation
-   * @notice If the signer of the transaction payload is not an expected address, an error is thrown
+   * @notice If the signer is not authorized, or if its signature of the payload is not valid, an error is thrown
+   * @dev A contract signer cannot be recovered from its signature, so the payload must name the signer
    */
   function run(
     AttestationPayload calldata attestationPayload,
@@ -85,18 +83,10 @@ contract ERC1271ModuleV2 is AbstractModuleV2 {
     address portal,
     OperationType /*operationType*/
   ) public view override {
-    bytes32 messageHash = keccak256(abi.encode(attestationPayload));
-    address messageSigner = messageHash.toEthSignedMessageHash().recover(validationPayload);
-    if (!authorizedSigners[portal][messageSigner]) revert SignerNotAuthorized();
+    (address signer, bytes memory signature) = abi.decode(validationPayload, (address, bytes));
+    if (!authorizedSigners[portal][signer]) revert SignerNotAuthorized();
 
-    if (messageSigner.isContract()) {
-      try IERC1271(messageSigner).isValidSignature(messageHash.toEthSignedMessageHash(), validationPayload) returns (
-        bytes4 magicValue
-      ) {
-        if (magicValue != IERC1271.isValidSignature.selector) revert InvalidSignature();
-      } catch {
-        revert FailedValidation();
-      }
-    }
+    bytes32 messageHash = keccak256(abi.encode(attestationPayload)).toEthSignedMessageHash();
+    if (!SignatureChecker.isValidSignatureNow(signer, messageHash, signature)) revert InvalidSignature();
   }
 }
