@@ -15,10 +15,12 @@ import { PortalRegistry } from "../PortalRegistry.sol";
  *      DISCLAIMER: This Module doesn't un-index revoked attestations.
  *      DISCLAIMER: This Module doesn't work as intended when bulk attesting.
  *      DISCLAIMER: This Module doesn't consider the chain prefix to generate the indexed attestation ID.
+ *      DISCLAIMER: This Module trusts a registered Portal to attest the payloads it runs through the ModuleRegistry.
  */
 contract IndexerModuleV2 is AbstractModuleV2 {
   AttestationRegistry public attestationRegistry;
   PortalRegistry public portalRegistry;
+  address public moduleRegistry;
 
   mapping(bytes subject => bytes32[] attestationIds) private attestationIdsBySubject;
   mapping(bytes subject => mapping(bytes32 schemaId => bytes32[] attestationIds))
@@ -31,22 +33,32 @@ contract IndexerModuleV2 is AbstractModuleV2 {
 
   /// @notice Error thrown when something else than a registered Portal is trying to index an Attestation
   error OnlyRegisteredPortal();
+  /// @notice Error thrown when something else than the ModuleRegistry is trying to run the Module
+  error OnlyModuleRegistry();
 
   /// @dev Emitted when an attestation is indexed.
   event AttestationIndexed(bytes32 attestationId);
 
+  modifier onlyModuleRegistry() {
+    if (msg.sender != moduleRegistry) revert OnlyModuleRegistry();
+    _;
+  }
+
   modifier onlyRegisteredPortal(address portal) {
-    if (portalRegistry.isRegistered(portal)) revert OnlyRegisteredPortal();
+    if (!portalRegistry.isRegistered(portal)) revert OnlyRegisteredPortal();
     _;
   }
 
   /**
-   * @dev Contract constructor sets the router.
+   * @dev Contract constructor sets the registries.
    * @param _attestationRegistry The address of the AttestationRegistry.
+   * @param _portalRegistry The address of the PortalRegistry.
+   * @param _moduleRegistry The address of the ModuleRegistry.
    */
-  constructor(address _attestationRegistry, address _portalRegistry) {
+  constructor(address _attestationRegistry, address _portalRegistry, address _moduleRegistry) {
     attestationRegistry = AttestationRegistry(_attestationRegistry);
     portalRegistry = PortalRegistry(_portalRegistry);
+    moduleRegistry = _moduleRegistry;
   }
 
   /**
@@ -54,7 +66,8 @@ contract IndexerModuleV2 is AbstractModuleV2 {
    * @param attestationPayload The Payload of the attestation
    * @param attester The address attesting the payload
    * @param portal The Portal issuing the attestation
-   * @notice If the signer of the transaction payload is not an expected address, an error is thrown
+   * @notice If the caller is not the ModuleRegistry, or if the Portal is not registered, an error is thrown
+   * @dev The ModuleRegistry sets `portal` to its own caller, so a direct caller cannot forge it
    */
   function run(
     AttestationPayload calldata attestationPayload,
@@ -64,7 +77,7 @@ contract IndexerModuleV2 is AbstractModuleV2 {
     address attester,
     address portal,
     OperationType /*operationType*/
-  ) public override onlyRegisteredPortal(portal) {
+  ) public override onlyModuleRegistry onlyRegisteredPortal(portal) {
     Attestation memory attestation = _buildAttestation(attestationPayload, attester, portal);
     _indexAttestation(attestation);
   }

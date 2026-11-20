@@ -11,7 +11,6 @@ import { PortalRegistryMock } from "../mocks/PortalRegistryMock.sol";
 import { AttestationRegistryMock } from "../mocks/AttestationRegistryMock.sol";
 import { SchemaRegistryMock } from "../mocks/SchemaRegistryMock.sol";
 import { Router } from "../../src/Router.sol";
-import { ValidPortalMock } from "../mocks/ValidPortalMock.sol";
 
 contract IndexerModuleV2Test is Test {
   using ECDSA for bytes32;
@@ -26,6 +25,8 @@ contract IndexerModuleV2Test is Test {
   address private user = makeAddr("user");
   address private portal = makeAddr("portal");
   address private portalOwner = makeAddr("portalOwner");
+  address private moduleRegistry = makeAddr("moduleRegistry");
+  address private attester = makeAddr("attester");
 
   AttestationPayload private payload1;
   AttestationPayload private payload2;
@@ -54,30 +55,60 @@ contract IndexerModuleV2Test is Test {
     attestationRegistry.attest(payload1, user);
     attestationRegistry.attest(payload2, user);
 
-    indexerModule = new IndexerModuleV2(address(attestationRegistry), address(portalRegistry));
+    indexerModule = new IndexerModuleV2(address(attestationRegistry), address(portalRegistry), moduleRegistry);
 
     indexerModule.indexAttestation(bytes32(abi.encode(1)));
 
     vm.stopPrank();
   }
 
+  function test_constructor() public view {
+    assertEq(address(indexerModule.attestationRegistry()), address(attestationRegistry));
+    assertEq(address(indexerModule.portalRegistry()), address(portalRegistry));
+    assertEq(indexerModule.moduleRegistry(), moduleRegistry);
+  }
+
   function test_run() public {
-    address[] memory modules = new address[](0);
     bytes32 expectedAttestationId = attestationRegistry.getNextAttestationId();
-    ValidPortalMock validPortal = new ValidPortalMock(modules, address(router));
-    vm.prank(address(validPortal));
+    vm.prank(moduleRegistry);
     vm.expectEmit({ emitter: address(indexerModule) });
     emit AttestationIndexed(expectedAttestationId);
-    indexerModule.run(
-      payload3,
-      bytes(""),
-      address(0),
-      0,
-      address(makeAddr("attester")),
-      address(validPortal),
-      OperationType.Attest
-    );
+    indexerModule.run(payload3, bytes(""), address(0), 0, attester, portal, OperationType.Attest);
+
     assertEq(indexerModule.getIndexedAttestationStatus(expectedAttestationId), true);
+    assertEq(indexerModule.getAttestationIdsBySubject(payload3.subject)[1], expectedAttestationId);
+    assertEq(
+      indexerModule.getAttestationIdsBySubjectBySchema(payload3.subject, payload3.schemaId)[0],
+      expectedAttestationId
+    );
+    assertEq(indexerModule.getAttestationIdsByAttester(attester)[0], expectedAttestationId);
+    assertEq(indexerModule.getAttestationIdsBySchema(payload3.schemaId)[0], expectedAttestationId);
+    assertEq(indexerModule.getAttestationIdsByPortal(portal)[0], expectedAttestationId);
+    assertEq(indexerModule.getAttestationIdsByPortalBySubject(portal, payload3.subject)[0], expectedAttestationId);
+  }
+
+  function test_run_OnlyModuleRegistry() public {
+    bytes32 expectedAttestationId = attestationRegistry.getNextAttestationId();
+
+    vm.prank(user);
+    vm.expectRevert(IndexerModuleV2.OnlyModuleRegistry.selector);
+    indexerModule.run(payload3, bytes(""), address(0), 0, attester, portal, OperationType.Attest);
+
+    vm.prank(portal);
+    vm.expectRevert(IndexerModuleV2.OnlyModuleRegistry.selector);
+    indexerModule.run(payload3, bytes(""), address(0), 0, attester, portal, OperationType.Attest);
+
+    assertEq(indexerModule.getIndexedAttestationStatus(expectedAttestationId), false);
+  }
+
+  function test_run_OnlyRegisteredPortal() public {
+    bytes32 expectedAttestationId = attestationRegistry.getNextAttestationId();
+
+    vm.prank(moduleRegistry);
+    vm.expectRevert(IndexerModuleV2.OnlyRegisteredPortal.selector);
+    indexerModule.run(payload3, bytes(""), address(0), 0, attester, user, OperationType.Attest);
+
+    assertEq(indexerModule.getIndexedAttestationStatus(expectedAttestationId), false);
   }
 
   function test_indexAttestation() public {
