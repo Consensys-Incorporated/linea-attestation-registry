@@ -32,7 +32,8 @@ Verax does not automatically guarantee:
 - Multiple modules see the same `msg.value`; at most one module should account for it.
 - `IndexerModuleV2` has known caveats:
   - it does not un-index revoked attestations;
-  - it is not reliable for bulk attestation ID prediction.
+  - it is not reliable for bulk attestation ID prediction;
+  - it trusts a registered portal to attest the payloads it runs through the `ModuleRegistry`.
 
 ## Practical trust model
 

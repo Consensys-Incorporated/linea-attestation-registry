@@ -24,6 +24,13 @@ data on behalf of another portal.
 `indexAttestation(...)` and `indexAttestations(...)` are open to anyone. They only read attestations that already exist
 in the `AttestationRegistry`.
 
+:::warning
+
+The `IndexerModule` instances listed in the repository README were deployed before this access control. Until they are
+redeployed, read the attestation from the `AttestationRegistry` before you rely on one of their indexed IDs.
+
+:::
+
 ## Query methods
 
 The module exposes view helpers such as:
