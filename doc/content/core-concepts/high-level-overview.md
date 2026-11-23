@@ -105,10 +105,11 @@ Trust is built by portals, issuer reputation, schema design, external verificati
 
 ## Mainnet and testnet behavior
 
-On testnets, schema and portal registration is permissionless because `PortalRegistry.isAllowlisted(user)` returns
-`true` when `isTestnet` is enabled.
+On testnets, schema, module, and portal registration is permissionless because `PortalRegistry.isAllowlisted(user)`
+returns `true` when `isTestnet` is enabled.
 
-On mainnets, schema creation and portal registration still depend on issuer allowlisting in `PortalRegistry`.
+On mainnets, schema creation, module registration, and portal registration still depend on issuer allowlisting in
+`PortalRegistry`.
 
 ## Next reads
 

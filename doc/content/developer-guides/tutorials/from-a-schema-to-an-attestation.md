@@ -13,10 +13,26 @@ Create:
 
 ## 1. Install and run the tutorial app
 
-From the monorepo root:
+From the monorepo root, install the dependencies:
 
 ```bash
 pnpm install
+```
+
+Create the environment file of the tutorial app:
+
+```bash
+cp tutorial/.env.example tutorial/.env
+```
+
+Set these two variables in `tutorial/.env`:
+
+- `VITE_WALLETCONNECT_PROJECT_ID`: a WalletConnect (Reown) project ID;
+- `VITE_INFURA_API_KEY`: an Infura API key.
+
+Then start the app:
+
+```bash
 pnpm --filter @verax-attestation-registry/verax-tutorial dev
 ```
 

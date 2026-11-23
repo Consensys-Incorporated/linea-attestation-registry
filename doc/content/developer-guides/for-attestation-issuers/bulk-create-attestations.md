@@ -10,7 +10,8 @@ Bulk issuance lets a portal create several attestations in one transaction.
 function bulkAttest(AttestationPayload[] memory attestationPayloads, bytes[][] memory validationPayloads) public;
 ```
 
-Unlike `attest(...)`, this function is not payable in `AbstractPortalV2`.
+Unlike `attest(...)`, this function is not payable in `AbstractPortalV2`. Modules receive a value of `0` for each
+payload, so a portal that uses `FeeModuleV2` with a non-zero fee cannot issue attestations in bulk.
 
 `validationPayloads` is two-dimensional:
 

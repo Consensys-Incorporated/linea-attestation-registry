@@ -30,3 +30,11 @@ Also remember:
 
 - only one module in a portal chain should interpret `msg.value`;
 - bulk module execution currently uses `0` as forwarded value.
+
+:::warning
+
+`bulkAttest(...)` and `bulkReplace(...)` are not payable, and the modules receive a value of `0` for each payload. On a
+portal that uses `FeeModuleV2`, these two functions revert with `InvalidAttestationFee` for each schema that has a
+non-zero fee. Use `attest(...)` and `replace(...)` for paid attestations.
+
+:::

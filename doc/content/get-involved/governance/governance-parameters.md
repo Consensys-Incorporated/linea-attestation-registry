@@ -15,8 +15,14 @@ snapshot of live production settings.
 
 On testnet deployments, registration is permissionless because `PortalRegistry` can run with `isTestnet = true`.
 
-On mainnet deployments, issuer onboarding still matters because schema creation and portal registration depend on the
-allowlist flow managed through `PortalRegistry`.
+On mainnet deployments, issuer onboarding still matters because schema creation, module registration, and portal
+registration depend on the allowlist flow managed through `PortalRegistry`:
+
+- `SchemaRegistry.createSchema(...)` is restricted to allowlisted issuers;
+- `ModuleRegistry.register(...)` is restricted to allowlisted issuers;
+- `PortalRegistry.register(...)` and `PortalRegistry.deployDefaultPortal(...)` are restricted to allowlisted issuers.
+
+`SchemaRegistry` and `ModuleRegistry` do not hold their own allowlist. They call `PortalRegistry.isAllowlisted(...)`.
 
 ## Practical rule
 
