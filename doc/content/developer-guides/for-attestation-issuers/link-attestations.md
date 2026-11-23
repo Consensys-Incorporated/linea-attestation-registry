@@ -14,8 +14,11 @@ namedGraphRelationship: (string namedGraph, bytes32 subject, string predicate, b
 
 Canonical IDs:
 
-- `Relationship`: `0x89bd76e17fd84df8e1e448fa1b46dd8d97f7e8e806552b003f8386a5aebcb9f0`
-- `namedGraphRelationship`: `0x5003a7832fa2734780a5bf6a1f3940b84c0c66a398e62dd4e7f183fdbc7da6ee`
+- `Relationship`: `0x41b8c81288eebbf173b2f54b9fb2f1d37f2caca51ef39e8f99299b53c2599a3a`
+- `namedGraphRelationship`: `0x8f83a0ef7871f63455a506f6bca0db98a88721764ae6dbde2afddd8e12e442b8`
+
+Each ID is the `keccak256` hash of the schema string, parentheses included. Some older deployments also hold a legacy
+form without parentheses. Do not use the legacy form for new attestations.
 
 ## Example relationship
 
