@@ -17,11 +17,11 @@ async function main() {
   }
 
   if (!attestationRegistryAddress) {
-    throw new Error("PortalRegistry address not found");
+    throw new Error("AttestationRegistry address not found");
   }
 
   if (!moduleRegistryAddress) {
-    throw new Error("PortalRegistry address not found");
+    throw new Error("ModuleRegistry address not found");
   }
 
   console.log("Deploying ECDSAModule...");
@@ -53,7 +53,11 @@ async function main() {
 
   console.log("Deploying IndexerModule...");
   const IndexerModule = await ethers.getContractFactory("IndexerModuleV2");
-  const indexerModule = await IndexerModule.deploy(attestationRegistryAddress, portalRegistryAddress);
+  const indexerModule = await IndexerModule.deploy(
+    attestationRegistryAddress,
+    portalRegistryAddress,
+    moduleRegistryAddress,
+  );
   await indexerModule.waitForDeployment();
   const indexerModuleAddress = await indexerModule.getAddress();
   console.log(`IndexerModule deployed to: ${indexerModuleAddress}`);
@@ -97,7 +101,11 @@ async function main() {
     await verifyContract(ecdsaModuleAddress, [portalRegistryAddress], shouldVerify);
     await verifyContract(erc1271ModuleAddress, [portalRegistryAddress], shouldVerify);
     await verifyContract(feeModuleAddress, [portalRegistryAddress], shouldVerify);
-    await verifyContract(indexerModuleAddress, [attestationRegistryAddress, portalRegistryAddress], shouldVerify);
+    await verifyContract(
+      indexerModuleAddress,
+      [attestationRegistryAddress, portalRegistryAddress, moduleRegistryAddress],
+      shouldVerify,
+    );
     await verifyContract(issuersModuleAddress, [portalRegistryAddress], shouldVerify);
     await verifyContract(schemaModuleAddress, [portalRegistryAddress], shouldVerify);
     await verifyContract(senderModuleAddress, [portalRegistryAddress], shouldVerify);
