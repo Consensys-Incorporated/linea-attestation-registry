@@ -20,6 +20,9 @@ Canonical IDs:
 Each ID is the `keccak256` hash of the schema string, parentheses included. Some older deployments also hold a legacy
 form without parentheses. Do not use the legacy form for new attestations.
 
+SDK versions up to `5.4.0` use the legacy IDs in `Constants` and in `getRelatedAttestations(...)`. Later versions use
+the canonical IDs above.
+
 ## Example relationship
 
 You can model:

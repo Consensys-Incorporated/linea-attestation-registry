@@ -27,6 +27,13 @@ bytes memory validationPayload = abi.encode(signer, signature);
 For a contract wallet, `signer` is the wallet address and `signature` is the value that the wallet expects in
 `isValidSignature(...)`. A raw signature without the signer is not a valid payload.
 
+:::warning
+
+The `ERC1271Module` instances listed in the repository README were deployed before this payload format. Until they are
+redeployed, they expect a raw ECDSA signature as `validationPayload` and they do not validate contract wallets.
+
+:::
+
 ## Portal-owner configuration
 
 ```solidity
