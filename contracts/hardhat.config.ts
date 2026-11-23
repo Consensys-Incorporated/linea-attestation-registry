@@ -102,15 +102,6 @@ const config: HardhatUserConfig = {
       accounts: process.env.PRIVATE_KEY_MAINNET !== undefined ? [process.env.PRIVATE_KEY_MAINNET] : [],
       timeout: 120_000,
     },
-    sepolia: {
-      url: `${
-        process.env.INFURA_KEY
-          ? `https://sepolia.infura.io/v3/${process.env.INFURA_KEY}`
-          : "https://ethereum-sepolia-rpc.publicnode.com"
-      }`,
-      accounts: process.env.PRIVATE_KEY_TESTNET !== undefined ? [process.env.PRIVATE_KEY_TESTNET] : [],
-      timeout: 120_000,
-    },
   },
   paths: {
     sources: "./src",
@@ -125,7 +116,6 @@ const config: HardhatUserConfig = {
       bsc: process.env.BSCSCAN_API_KEY ?? "",
       "linea-sepolia": process.env.LINEASCAN_API_KEY ?? "",
       linea: process.env.LINEASCAN_API_KEY ?? "",
-      sepolia: process.env.ETHERSCAN_API_KEY ?? "",
     },
     customChains: [
       {
@@ -190,14 +180,6 @@ const config: HardhatUserConfig = {
         urls: {
           apiURL: "https://api.lineascan.build/api",
           browserURL: "https://lineascan.build",
-        },
-      },
-      {
-        network: "sepolia",
-        chainId: 11155111,
-        urls: {
-          apiURL: "https://api-sepolia.etherscan.io/api",
-          browserURL: "https://sepolia.etherscan.io",
         },
       },
     ],
