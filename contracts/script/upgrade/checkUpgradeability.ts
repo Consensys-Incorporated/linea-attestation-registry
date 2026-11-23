@@ -26,6 +26,7 @@ function isTransientRpcError(error: unknown): boolean {
   const msg = error instanceof Error ? error.message : String(error);
   if (/internal error/i.test(msg)) return true;
   if (/ECONNRESET|ETIMEDOUT|ENETUNREACH|socket hang up|fetch failed/i.test(msg)) return true;
+  if (/too many requests|rate limit/i.test(msg)) return true;
   return /429|502|503|504/.test(msg);
 }
 
